@@ -1,0 +1,144 @@
+/* IMPOSTAZIONI GENERALI */
+body{
+    color: #393d41;
+    font-size: 1.2rem;
+    font-family: "Open Sans";
+    line-height: 1.5;
+    text-align: center;
+}
+h1{
+    color: #25a2c3;
+    font-family: "Montserrat";
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* HEADER */
+
+#logo{
+    background-color: black;
+}
+#logo img{
+    width: 9rem;
+    padding: 20px 0 20px 0;
+}
+#banner{
+    background-image: url(../images/banner.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+#banner h1{
+    padding-top: 1.4em;
+    font-size: 1.9em;
+    line-height: 0.8em;
+    width: 50%;
+    margin: 0 auto;
+}
+#banner p{
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 1.4em;
+}
+#bottone{
+    padding-top: 1.3em;
+    padding-bottom: 2em;
+}
+#bottone button{
+    width: 30%;
+    background-color: #f04c2f;
+    height: 2.8em;
+    border-radius: 7px;
+    border: none;
+}
+#bottone button a{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* MAIN */
+#container{
+    padding: 50px 10% 50px 10%;
+}
+
+/* ARTICOLI */
+.articolo{
+    margin-bottom: 35px;
+}
+#ultimo{
+    margin-bottom: 0;
+}
+#foto_rotonda{
+   margin-bottom: 35px;
+}
+#foto_rotonda img{
+    border-radius: 100%;
+    width: 90%;
+}
+
+/* SECTION 1 */
+#aggiunta{
+    background-color: #e22d0e;
+    color: white;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+#aggiunta h1{
+    font-size: 1.7em;
+    color: white;
+    margin-bottom: 25px;
+}
+#nome{
+    margin-top: 34px;
+}
+#ceo{
+    font-size: 0.8rem;
+}
+
+/* SECTION CONTAINER CARD */
+#container_card{
+    margin: 50px 5% 50px 5%;
+
+}
+.card{
+    border: 1px solid #dee1e3;
+    margin-bottom: 28px;
+    box-shadow: 8px 16px 10px #dee1e3;
+}
+.card img{
+    width: 100%;
+}
+.testo{
+    padding: 5px 5% 25px 5%;
+}
+
+
+
+/* FOOTER */
+footer{
+    background-color: #25a2c3;
+    color: #c8e7f0;
+    padding: 30px 0 60px 0;
+}
+footer a{
+    color: #c8e7f0;
+}
+footer li{
+    list-style-type: none;
+}
+footer h1{
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+#copy{
+    border-top: 1px solid rgba(255, 255, 255, 0.754);
+    width: 48%;
+    margin: 0 auto;
+    font-size: 0.9em;
+    margin-top: 30px;
+}
+#copy p{
+    margin-top: 30px;
+}
