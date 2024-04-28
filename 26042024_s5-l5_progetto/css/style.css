@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-size: 5em;
+  font-family: "Spectral", serif;
+  font-weight: 300;
+  letter-spacing: -5px;
+}
+
+header {
+  background-color: #ffc017;
+}
+
+.menu {
+  padding: 1em 12%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.nav_bar a {
+  margin-right: 1.5em;
+  text-decoration: none;
+  color: black;
+}
+.nav_bar a:last-of-type {
+  background-color: #191919;
+  color: white;
+  padding: 0.6em;
+  border-radius: 25px;
+}
+
+.intestazione {
+  padding: 0 0 0 12%;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+.titolo {
+  padding: 70px 0 0 0;
+}
+.titolo h1 {
+  margin-bottom: 20px;
+}
+.titolo p {
+  margin-bottom: 60px;
+}
+.titolo a {
+  text-decoration: none;
+  background-color: #191919;
+  color: white;
+  padding: 0.6em 2em;
+  border-radius: 25px;
+}
+
+/* POST NEL MAIN */
+#intestazione_main {
+  display: flex;
+  align-items: center;
+}
+#intestazione_main p {
+  margin-left: 0.5em;
+  font-size: 0.8em;
+}
+
+section {
+  padding: 2.4em 12% 0 12%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+section .posts1,
+.posts2 {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+section .post {
+  display: flex;
+  margin-bottom: 2.5em;
+  width: 340px;
+}
+section .post h4 {
+  font-size: 1.7em;
+  margin-right: 0.6em;
+  font-weight: 800;
+  color: rgba(128, 128, 128, 0.2);
+}
+
+.text_post > h3 {
+  font-weight: 800;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
+}
+
+.nome {
+  display: flex;
+  align-items: center;
+}
+.nome img {
+  border-radius: 30px;
+  width: 27px;
+  margin-right: 0.6em;
+}
+.nome > p {
+  font-size: 0.8em;
+}
+
+/* ARTICOLI ALL'INTERNO DEL MAIN */
+.sezione {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#no_border {
+  border: none;
+}
+.container_section {
+  display: flex;
+  flex-direction: column;
+}
+.container_articolo {
+  display: flex;
+  width: 750px;
+  margin-right: 2em;
+  margin-bottom: 3em;
+  justify-content: space-between;
+}
+.container_articolo > img {
+  width: 200px;
+}
+.articolo {
+  margin-right: 1.8em;
+  display: flex;
+  flex-direction: column;
+}
+.articolo p {
+  margin-top: 0.6em;
+}
+.articolo h2 {
+  font-weight: 800;
+  margin-top: 0.5em;
+  font-size: 1.5em;
+}
+.dati {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  width: 500px;
+}
+.icon {
+  display: flex;
+  width: 350px;
+  align-items: end;
+  margin-top: 0.8em;
+  justify-content: flex-start;
+}
+.icon p {
+  margin-top: 0;
+}
+.plus {
+  position: relative;
+  right: 0;
+}
+
+/* COLLEGAMENTI ESTERNI */
+.collegamenti_esterni {
+  width: 30%;
+}
+.collegamenti_esterni h4 {
+  margin-bottom: 1.5em;
+  font-weight: 800;
+  font-size: 0.8em;
+}
+.settori {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 2em;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+  margin-bottom: 2em;
+}
+.settori > a {
+  margin-right: 0.7em;
+  margin-bottom: 0.7em;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  padding: 0.7em;
+  text-decoration: none;
+  color: #191919;
+}
+.canali_alternativi {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.canali_alternativi > a {
+  text-decoration: none;
+  color: #191919;
+  margin-left: 2em;
+}
