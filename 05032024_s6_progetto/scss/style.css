@@ -1,0 +1,24 @@
+.active {
+  font-weight: bold;
+}
+
+.extra-small-text {
+  font-size: 0.7em;
+}
+
+.container-personalizzato {
+  width: 100%;
+}
+@media screen and (min-width: 993px) {
+  .container-personalizzato {
+    width: 70%;
+  }
+}
+
+.av-kids {
+  width: 30px;
+}
+
+.size {
+  font-size: 1.4em;
+}/*# sourceMappingURL=style.css.map */
