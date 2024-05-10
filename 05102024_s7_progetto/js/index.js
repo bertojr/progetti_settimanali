@@ -34,15 +34,17 @@ const generateArticles = function (arrayArticles) {
   const rowArticles = document.getElementById("row-articles");
   arrayArticles.forEach((article) => {
     const newCol = document.createElement("col");
-    newCol.classList.add("col");
+    newCol.classList.add("col", "mb-4");
     newCol.innerHTML = `
-        <a href="./details.html?id=${article._id}" class="text-dark text-decoration-none ">
-            <div class="card">
-                <img src="${article.imageUrl}" class="card-img-top" alt="Foto articolo">
+        <a href="./details.html?id=${article._id}" class="text-white text-decoration-none">
+            <div class="card h-100 border-0">
+                <div class="d-flex justify-content-center">
+                    <img src="${article.imageUrl}" class="card-img-top w-75" alt="Foto articolo">
+                </div>
                 <div class="card-body">
                     <p class="card-title">${article.name}</p>
                     <h6 class="card-text"><b>${article.price} €</b></h6>
-                    <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                    <button type="button" class="btn border text-danger bg-danger-hover text-light-hover">Aggiungi al carrello</button>
                 </div>
             </div>
         </a>

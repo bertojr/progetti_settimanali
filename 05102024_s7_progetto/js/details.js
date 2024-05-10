@@ -30,12 +30,23 @@ const getArticleWithId = function () {
 const generateArticle = function (article) {
   const col = document.getElementById("col-article");
   col.innerHTML = `
-            <img src="${article.imageUrl}" class="card-img-top" alt="Foto articolo">
-            <p class="card-title">${article.name}</p>
-            <h6 class="card-text"><b>${article.price} €</b></h6>
-            <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
-            <a href="./backoffice.html?id=${article._id}" class="btn btn-primary">MODIFICA</a>
-            <a href="#" class="btn btn-primary" onclick="deleteArticle()">ELIMINA</a>
+            <div class="col-2 me-5 ">
+                <img src="${article.imageUrl}" class="card-img-top" alt="Foto articolo">
+            </div>
+            <div class="col-10">
+                <div>
+                    <p class="card-title">${article.name}</p>
+                    <h3>Descrizione</h3>
+                    <p class="card-title">${article.description}</p>
+                    <h6 class="card-text mb-4">Prezzo: <b>${article.price} €</b></h6>
+                </div
+                <div class="d-flex">
+                    <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                    <a href="./backoffice.html?id=${article._id}" class="btn btn-primary">MODIFICA</a>
+                    <a href="#" class="btn btn-primary" onclick="deleteArticle()">ELIMINA</a>
+                </div>
+            </div>
+            
     `;
 };
 
