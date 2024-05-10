@@ -10,24 +10,28 @@ class Article {
     this.price = _price;
   }
 }
-const apiUrl = "https://striveschool-api.herokuapp.com/api/product/";
+let apiUrl = "https://striveschool-api.herokuapp.com/api/product/";
 const apiKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNkZDJmODgxODQ0MjAwMTUzNzU4N2IiLCJpYXQiOjE3MTUzMjc3MzYsImV4cCI6MTcxNjUzNzMzNn0.FQHc9irMiDmzXzQNQCHhnvCH4ZDO4PlsVcXz5XIsots";
 const addressBarContent = new URLSearchParams(location.search);
 const articleId = addressBarContent.get("id");
 console.log(articleId);
+let methodToUse;
 
 // prendo il riferimento al form
 const submitEvent = document.getElementById("submit-event");
 
-const createArticle = function () {
-  // prendo i riferimetni agli input del form
-  const nameInput = document.getElementById("name");
-  const descriptionInput = document.getElementById("description");
-  const urlImageInput = document.getElementById("url-image");
-  const brandInput = document.getElementById("brand");
-  const priceInput = document.getElementById("price");
+// prendo il riferimento a btn-submit
+const btnSubmit = document.getElementById("btn-submit");
 
+// prendo i riferimenti agli input del form
+const nameInput = document.getElementById("name");
+const descriptionInput = document.getElementById("description");
+const urlImageInput = document.getElementById("url-image");
+const brandInput = document.getElementById("brand");
+const priceInput = document.getElementById("price");
+
+const createEmodifyArticle = function () {
   const articleFromForm = new Article(
     nameInput.value,
     descriptionInput.value,
@@ -35,8 +39,15 @@ const createArticle = function () {
     urlImageInput.value,
     priceInput.value
   );
+  if (!articleId) {
+    methodToUse = "POST";
+  } else {
+    apiUrl = apiUrl + articleId;
+    methodToUse = "PUT";
+  }
+
   fetch(apiUrl, {
-    method: "POST",
+    method: methodToUse,
     body: JSON.stringify(articleFromForm),
     headers: {
       "Content-type": "application/json",
@@ -45,7 +56,20 @@ const createArticle = function () {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Articolo creato");
+        if (articleId) {
+          alert(`Articolo modificato`);
+          location.assign("./index.html");
+        } else {
+          let result = confirm(
+            `Articolo creato! 
+            Vuoi creare un altro articolo?`
+          );
+          if (result) {
+            location.assign("./backoffice.html");
+          } else {
+            location.assign("./index.html");
+          }
+        }
       } else {
         throw new Error("Il server non è stato raggiunto");
       }
@@ -55,7 +79,36 @@ const createArticle = function () {
     });
 };
 
+const getArticleWithId = function () {
+  fetch(apiUrl + articleId, {
+    headers: {
+      Authorization: "Bearer " + apiKey,
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Il server non è stato raggiunto");
+      }
+    })
+    .then((art) => {
+      console.log(art);
+      nameInput.value = art.name;
+      descriptionInput.value = art.description;
+      urlImageInput.value = art.imageUrl;
+      brandInput.value = art.brand;
+      priceInput.value = art.price;
+    })
+    .catch((err) => {
+      console.log("ERRORE", err);
+    });
+};
+if (articleId) {
+  getArticleWithId();
+  btnSubmit.innerHTML = "Modifica";
+}
 submitEvent.addEventListener("submit", function (e) {
   e.preventDefault();
-  createArticle();
+  createEmodifyArticle();
 });
