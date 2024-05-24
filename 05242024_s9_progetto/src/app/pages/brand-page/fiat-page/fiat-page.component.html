@@ -1,20 +1,29 @@
-<div class="row">
-  <div class="col-6" *ngFor="let autoFiat of autoFiat">
-    <div class="card" style="width: 200px">
-      <img
-        src="{{ autoFiat.modelImage }}"
-        class="card-img-top"
-        alt="image auto"
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{ autoFiat.model }}</h5>
-        <p class="card-text">{{ autoFiat.year }} {{ autoFiat.price }}</p>
+<div class="text-center mb-4">
+  <img
+    src="{{ autoFiat[0].brandLogo }}"
+    alt="Fiat Logo"
+    class="brand-logo img-fluid"
+  />
+</div>
+
+<div class="row justify-content-center">
+  <h2 class="text-center mb-4" id="i-nostri-marchi">Le nostre Fiat</h2>
+  <div class="col-md-6 col-lg-4 mb-4" *ngFor="let auto of autoFiat">
+    <div class="card h-100">
+      <img src="{{ auto.modelImage }}" class="card-img-top" alt="image auto" />
+      <div
+        class="card-body text-center"
+        [ngClass]="{
+          'text-bg-success': !auto.available,
+          'text-bg-danger': auto.available
+        }"
+      >
+        <h5 class="card-title">{{ auto.model }}</h5>
+        <p class="card-text">{{ auto.year }} - ${{ auto.price }}</p>
         <p class="card-text">
-          Pronta consegna: {{ autoFiat.available ? "NO" : "SI" }}
+          Pronta consegna:
+          {{ auto.available ? "NO" : "SI" }}
         </p>
-        <a href="#" class="btn btn-primary"
-          >Tutte le nostre {{ autoFiat.brand }}</a
-        >
       </div>
     </div>
   </div>

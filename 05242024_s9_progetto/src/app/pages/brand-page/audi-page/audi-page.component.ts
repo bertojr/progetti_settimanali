@@ -5,7 +5,7 @@ import { iAuto } from '../../../models/auto';
 @Component({
   selector: 'app-audi-page',
   templateUrl: './audi-page.component.html',
-  styleUrl: './audi-page.component.scss',
+  styleUrl: '../brand-page.component.scss',
 })
 export class AudiPageComponent {
   autoAudi: iAuto[] = [];

@@ -5,7 +5,7 @@ import { iAuto } from '../../../models/auto';
 @Component({
   selector: 'app-ford-page',
   templateUrl: './ford-page.component.html',
-  styleUrl: './ford-page.component.scss',
+  styleUrl: '../brand-page.component.scss',
 })
 export class FordPageComponent {
   autoFord: iAuto[] = [];

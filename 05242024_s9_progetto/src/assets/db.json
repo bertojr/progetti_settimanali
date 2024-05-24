@@ -37,7 +37,7 @@
   },
   {
     "brand": "Audi",
-    "brandLogo": "https://www.freepnglogos.com/uploads/audi-logo-21.png",
+    "brandLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Audi-Logo_2016.svg/640px-Audi-Logo_2016.svg.png",
     "model": "A3",
     "modelImage": "https://picsum.photos/200/300?random=5",
     "year": 2012,
@@ -46,7 +46,7 @@
   },
   {
     "brand": "Audi",
-    "brandLogo": "https://www.freepnglogos.com/uploads/audi-logo-21.png",
+    "brandLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Audi-Logo_2016.svg/640px-Audi-Logo_2016.svg.png",
     "model": "Q7",
     "modelImage": "https://picsum.photos/200/300?random=6",
     "year": 2020,

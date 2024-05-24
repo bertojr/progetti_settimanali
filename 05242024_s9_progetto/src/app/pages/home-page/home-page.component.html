@@ -1,17 +1,38 @@
-<div class="row">
-  <div class="col-4" *ngFor="let brand of brandArr">
-    <img src="{{ brand }}" alt="" style="width: 200px" />
+<div class="row justify-content-center">
+  <h2 class="text-center mb-4" id="i-nostri-marchi">I nostri marchi</h2>
+  <div
+    class="col-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center align-items-center"
+    *ngFor="let brand of brandArr"
+  >
+    <img
+      src="{{ brand }}"
+      alt="Brand Logo"
+      class="brand-logo img-fluid logo-brand"
+    />
   </div>
 </div>
 <div class="row">
-  <div class="col-6" *ngFor="let auto of twoAutoRandom">
-    <div class="card" style="width: 200px">
+  <h2 class="text-center mb-4" id="i-nostri-marchi">Auto in evidenzia</h2>
+  <div
+    class="col-md-6 mb-4 d-flex justify-content-center"
+    *ngFor="let auto of twoAutoRandom"
+  >
+    <div class="card">
       <img src="{{ auto.modelImage }}" class="card-img-top" alt="image auto" />
-      <div class="card-body">
+      <div
+        class="card-body text-center"
+        [ngClass]="{
+          'text-bg-success': auto.available,
+          'text-bg-danger': !auto.available
+        }"
+      >
         <h5 class="card-title">{{ auto.model }}</h5>
-        <p class="card-text">{{ auto.year }} {{ auto.price }}</p>
+        <p class="card-text">{{ auto.year }} - ${{ auto.price }}</p>
         <p class="card-text">
-          Pronta consegna: {{ auto.available ? "NO" : "SI" }}
+          Pronta consegna:
+          <span>
+            {{ auto.available ? "SI" : "NO" }}
+          </span>
         </p>
         <a
           [routerLink]="['brand-page', auto.brand.toLowerCase()]"
