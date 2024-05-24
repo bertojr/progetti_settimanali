@@ -1,1 +1,20 @@
-<p>home-page works!</p>
+<div class="row">
+  <div class="col-4" *ngFor="let brand of brandArr">
+    <img src="{{ brand }}" alt="" style="width: 200px" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-6" *ngFor="let auto of twoAutoRandom">
+    <div class="card" style="width: 200px">
+      <img src="{{ auto.modelImage }}" class="card-img-top" alt="image auto" />
+      <div class="card-body">
+        <h5 class="card-title">{{ auto.model }}</h5>
+        <p class="card-text">{{ auto.year }} {{ auto.price }}</p>
+        <p class="card-text">
+          Pronta consegna: {{ auto.available ? "NO" : "SI" }}
+        </p>
+        <a href="#" class="btn btn-primary">Tutte le nostre {{ auto.brand }}</a>
+      </div>
+    </div>
+  </div>
+</div>
