@@ -9,9 +9,8 @@ export class AutoService {
   auto: iAuto[] = [];
   twoRandomAuto: iAuto[] = [];
   brand: string[] = [];
-  constructor() {
-    this.getAutoFromJson();
-  }
+  autoBrand: iAuto[] = [];
+  constructor() {}
 
   async getAutoFromJson(): Promise<void> {
     const response = await fetch(this.urlJson);
@@ -42,6 +41,7 @@ export class AutoService {
   }
 
   async getAutoByBrand(brand: string) {
-    return this.auto.filter((auto) => auto.brandLogo === brand);
+    await this.getAutoFromJson();
+    return this.auto.filter((auto) => auto.brand === brand);
   }
 }

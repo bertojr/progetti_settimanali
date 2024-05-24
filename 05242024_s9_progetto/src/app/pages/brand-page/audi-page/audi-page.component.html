@@ -1,1 +1,21 @@
-<p>audi-page works!</p>
+<div class="row">
+  <div class="col-6" *ngFor="let autoAudi of autoAudi">
+    <div class="card" style="width: 200px">
+      <img
+        src="{{ autoAudi.modelImage }}"
+        class="card-img-top"
+        alt="image auto"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ autoAudi.model }}</h5>
+        <p class="card-text">{{ autoAudi.year }} {{ autoAudi.price }}</p>
+        <p class="card-text">
+          Pronta consegna: {{ autoAudi.available ? "NO" : "SI" }}
+        </p>
+        <a href="#" class="btn btn-primary"
+          >Tutte le nostre {{ autoAudi.brand }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

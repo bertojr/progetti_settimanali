@@ -12,15 +12,15 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'brand-page/:brand',
+    path: 'brand-page/fiat',
     component: FiatPageComponent,
   },
   {
-    path: 'brand-page/:brand',
+    path: 'brand-page/ford',
     component: FordPageComponent,
   },
   {
-    path: 'brand-page/:brand',
+    path: 'brand-page/audi',
     component: AudiPageComponent,
   },
 ];
