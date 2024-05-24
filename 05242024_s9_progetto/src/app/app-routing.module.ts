@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { FiatPageComponent } from './pages/fiat-page/fiat-page.component';
-import { FordPageComponent } from './pages/ford-page/ford-page.component';
-import { AudiPageComponent } from './pages/audi-page/audi-page.component';
+import { FiatPageComponent } from './pages/brand-page/fiat-page/fiat-page.component';
+import { FordPageComponent } from './pages/brand-page/ford-page/ford-page.component';
+import { AudiPageComponent } from './pages/brand-page/audi-page/audi-page.component';
 
 const routes: Routes = [
   {
@@ -12,15 +12,15 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'fiat-page',
+    path: 'brand-page/:brand',
     component: FiatPageComponent,
   },
   {
-    path: 'ford-page',
+    path: 'brand-page/:brand',
     component: FordPageComponent,
   },
   {
-    path: 'audi-page',
+    path: 'brand-page/:brand',
     component: AudiPageComponent,
   },
 ];
