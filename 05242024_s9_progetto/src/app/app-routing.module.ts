@@ -4,6 +4,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FiatPageComponent } from './pages/brand-page/fiat-page/fiat-page.component';
 import { FordPageComponent } from './pages/brand-page/ford-page/ford-page.component';
 import { AudiPageComponent } from './pages/brand-page/audi-page/audi-page.component';
+import { BrandPageComponent } from './pages/brand-page/brand-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'brand-page/audi',
     component: AudiPageComponent,
+  },
+  {
+    path: 'brand-page/:brand',
+    component: BrandPageComponent,
   },
 ];
 

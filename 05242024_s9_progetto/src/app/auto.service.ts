@@ -8,8 +8,6 @@ export class AutoService {
   urlJson: string = '../assets/db.json';
   auto: iAuto[] = [];
   twoRandomAuto: iAuto[] = [];
-  brand: string[] = [];
-  autoBrand: iAuto[] = [];
   constructor() {}
 
   async getAutoFromJson(): Promise<void> {

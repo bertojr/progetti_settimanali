@@ -13,7 +13,11 @@
         <p class="card-text">
           Pronta consegna: {{ auto.available ? "NO" : "SI" }}
         </p>
-        <a href="#" class="btn btn-primary">Tutte le nostre {{ auto.brand }}</a>
+        <a
+          [routerLink]="['brand-page', auto.brand.toLowerCase()]"
+          class="btn btn-primary"
+          >Tutte le nostre {{ auto.brand }}</a
+        >
       </div>
     </div>
   </div>
