@@ -1,0 +1,45 @@
+/* Navbar brand */
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+/* Navbar toggler */
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+/* Navbar active link */
+.navbar-nav .nav-link.active {
+  font-weight: bold;
+}
+
+/* Navbar search form */
+.navbar-form .form-control {
+  border-radius: 30px;
+  border-color: transparent;
+}
+
+.navbar-form .form-control:focus {
+  box-shadow: none;
+}
+
+/* Navbar search button */
+.navbar-form .btn {
+  border-radius: 30px;
+}
+
+/* Navbar search button hover */
+.navbar-form .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

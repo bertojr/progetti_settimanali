@@ -1,0 +1,65 @@
+.user-card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.user-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+}
+
+.list-group-item {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.list-group-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.list-group-item input[type="checkbox"] {
+  cursor: pointer;
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.list-group-item h5 {
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.bg-success {
+  background-color: #28a745 !important;
+  color: #ffffff;
+}
+
+.bg-danger {
+  background-color: #dc3545 !important;
+  color: #ffffff;
+}
+
+
+
+
+
+
+

@@ -1,30 +1,34 @@
-<div class="row">
-  <div
-    class="d-flex justify-content-center col-12"
-    *ngFor="let user of usersWithTodos"
-  >
-    <div class="d-flex flex-row">
-      <img [src]="user.user.image" alt="Avatar" />
-      <div>
-        <h3>{{ user.user.firstName }} {{ user.user.lastName }}</h3>
-        <ul class="list-group">
-          <li
-            class="list-group-item d-flex"
-            *ngFor="let todo of user.todos"
-            [ngClass]="{
-            'bg-success': todo.completed,
-            'bg-danger': !todo.completed,
-          }"
-          >
-            <input
-              type="checkbox"
-              name="completed"
-              [(ngModel)]="todo.completed"
-            />
-            <h5>{{ todo.todo }}</h5>
-          </li>
-        </ul>
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8">
+    <div *ngFor="let user of usersWithTodos" class="user-card mb-4">
+      <div class="d-flex align-items-center mb-3">
+        <img [src]="user.user.image" alt="Avatar" class="avatar me-3" />
+        <div>
+          <h3 class="mb-0">
+            {{ user.user.firstName }} {{ user.user.lastName }}
+          </h3>
+        </div>
       </div>
+      <ul class="list-group">
+        <li
+          *ngFor="let todo of user.todos"
+          class="list-group-item d-flex align-items-center"
+          [ngClass]="{
+            'bg-success text-white': todo.completed,
+            'bg-danger text-white': !todo.completed
+          }"
+        >
+          <input
+            type="checkbox"
+            class="form-check-input me-3"
+            name="completed"
+            [(ngModel)]="todo.completed"
+          />
+          <h5 class="mb-0">{{ todo.todo }}</h5>
+          <i class="fas fa-check check-icon" *ngIf="todo.completed"></i>
+          <i class="fas fa-times cancel-icon" *ngIf="!todo.completed"></i>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
