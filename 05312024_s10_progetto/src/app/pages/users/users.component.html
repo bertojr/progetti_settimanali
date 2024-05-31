@@ -1,1 +1,30 @@
-<p>users works!</p>
+<div class="row">
+  <div
+    class="d-flex justify-content-center col-12"
+    *ngFor="let user of usersWithTodos"
+  >
+    <div class="d-flex flex-row">
+      <img [src]="user.user.image" alt="Avatar" />
+      <div>
+        <h3>{{ user.user.firstName }} {{ user.user.lastName }}</h3>
+        <ul class="list-group">
+          <li
+            class="list-group-item d-flex"
+            *ngFor="let todo of user.todos"
+            [ngClass]="{
+            'bg-success': todo.completed,
+            'bg-danger': !todo.completed,
+          }"
+          >
+            <input
+              type="checkbox"
+              name="completed"
+              [(ngModel)]="todo.completed"
+            />
+            <h5>{{ todo.todo }}</h5>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

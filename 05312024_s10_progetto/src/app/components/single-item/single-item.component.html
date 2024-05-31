@@ -1,17 +1,26 @@
 <li
-  class="list-group-item"
+  class="list-group-item d-flex align-items-center justify-content-between todo-item"
   [ngClass]="{
-    'bg-success': todoItem.completed,
-    'bg-danger': !todoItem.completed,
+    'bg-success text-white': todoItem.completed,
+    'bg-danger text-white': !todoItem.completed
   }"
 >
-  <input type="checkbox" name="completed" [(ngModel)]="todoItem.completed" />
-  <h3>{{ todoItem.todo }}</h3>
-  <p>
-    Assegnato a:
-    <span
-      >{{ getUserName(todoItem.userId)?.firstName }}
-      {{ getUserName(todoItem.userId)?.lastName }}</span
-    >
-  </p>
+  <div class="d-flex align-items-center">
+    <input
+      type="checkbox"
+      name="completed"
+      class="me-3"
+      [(ngModel)]="todoItem.completed"
+    />
+    <div class="todo-details">
+      <h5 class="mb-1">{{ todoItem.todo }}</h5>
+      <small class="text-light">
+        Assegnato a:
+        <span
+          >{{ getUserName(todoItem.userId)?.firstName }}
+          {{ getUserName(todoItem.userId)?.lastName }}</span
+        >
+      </small>
+    </div>
+  </div>
 </li>

@@ -910,13 +910,24 @@ export class TodoService {
     },
   ];
   userArr: iUser[] = [];
-  constructor(private userSvc: UserService) {}
+  usersWithTodos: { user: iUser; todos: iTodo[] }[] = [];
+  constructor(private userSvc: UserService) {
+    this.userArr = this.userSvc.usersArr;
+  }
 
   getUserName(userId: number): iUser | undefined {
-    this.userArr = this.userSvc.usersArr;
     return this.userArr.find((user) => user.id == userId);
   }
   getTodosCompleted(): iTodo[] {
     return this.todosArr.filter((todo) => todo.completed == true);
+  }
+  getUsersWithTodos(): { user: iUser; todos: iTodo[] }[] {
+    this.userArr.forEach((user) => {
+      this.usersWithTodos.push({
+        user,
+        todos: this.todosArr.filter((todo) => todo.userId == user.id),
+      });
+    });
+    return this.usersWithTodos;
   }
 }

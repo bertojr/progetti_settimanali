@@ -1,0 +1,89 @@
+/* Stile per il singolo item */
+.todo-item {
+  background-color: #ffffff; /* Colore di sfondo di base */
+  border: 1px solid #dee2e6; /* Bordo leggero */
+  border-radius: 15px; /* Angoli arrotondati */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  transition: transform 0.3s, box-shadow 0.3s; /* Transizioni */
+  padding: 20px; /* Padding interno */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px; /* Altezza minima */
+  position: relative;
+}
+
+/* Colori di sfondo per stato completato/non completato */
+.todo-item.bg-success {
+  background-color: #28a745 !important; /* Verde */
+}
+
+.todo-item.bg-danger {
+  background-color: #dc3545 !important; /* Rosso */
+}
+
+/* Stile per il testo */
+.todo-item h5 {
+  color: #343a40; /* Colore del testo */
+  margin-bottom: 0.5rem;
+  font-weight: 600; /* Peso del carattere */
+}
+
+.todo-item small {
+  color: #6c757d; /* Colore del testo piccolo */
+}
+
+.todo-item .text-light {
+  color: #f8f9fa !important; /* Colore del testo chiaro */
+}
+
+/* Effetto hover per il singolo item */
+.todo-item:hover {
+  transform: translateY(-5px); /* Sollevamento */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Ombra più pronunciata */
+}
+
+/* Stile per i dettagli dell'elemento */
+.todo-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stile per l'input checkbox */
+.todo-item input[type="checkbox"] {
+  transform: scale(1.3); /* Ingrandisce l'input checkbox */
+  margin-right: 10px; /* Spaziatura a destra dell'input */
+  cursor: pointer; /* Puntatore di clic */
+}
+
+/* Stile per il div che contiene il checkbox e il testo */
+.todo-item .d-flex {
+  align-items: center;
+}
+
+.todo-item::before {
+  content: '\f00c'; /* Codice Unicode per un'icona di check (Font Awesome) */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.todo-item.bg-success::before {
+  content: '\f058'; /* Codice Unicode per un'icona di check cerchiato */
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.todo-item.bg-danger::before {
+  content: '\f057'; /* Codice Unicode per un'icona di X cerchiata */
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+
+
