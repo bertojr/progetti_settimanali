@@ -912,6 +912,10 @@ export class TodoService {
   userArr: iUser[] = [];
   constructor(private userSvc: UserService) {}
 
+  getUserName(userId: number): iUser | undefined {
+    this.userArr = this.userSvc.usersArr;
+    return this.userArr.find((user) => user.id == userId);
+  }
   getTodosCompleted(): iTodo[] {
     return this.todosArr.filter((todo) => todo.completed == true);
   }

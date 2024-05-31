@@ -1,6 +1,6 @@
 import { Component, Input, input } from '@angular/core';
-import { TodoService } from '../../services/todo.service';
 import { iTodo } from '../../models/itodo';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-single-item',
@@ -9,4 +9,9 @@ import { iTodo } from '../../models/itodo';
 })
 export class SingleItemComponent {
   @Input() todoItem!: iTodo;
+  constructor(private todoSvc: TodoService) {}
+
+  getUserName(userId: number) {
+    return this.todoSvc.getUserName(userId);
+  }
 }
