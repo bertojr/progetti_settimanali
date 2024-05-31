@@ -12,7 +12,7 @@
       <ul class="list-group">
         <li
           *ngFor="let todo of user.todos"
-          class="list-group-item d-flex align-items-center"
+          class="list-group-item"
           [ngClass]="{
             'bg-success text-white': todo.completed,
             'bg-danger text-white': !todo.completed

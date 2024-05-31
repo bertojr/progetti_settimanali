@@ -28,6 +28,8 @@
   margin-bottom: 10px;
   transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .list-group-item:hover {
@@ -47,15 +49,28 @@
   color: #343a40;
 }
 
-.bg-success {
-  background-color: #28a745 !important;
-  color: #ffffff;
+.check-icon,
+.cancel-icon {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
 }
 
-.bg-danger {
-  background-color: #dc3545 !important;
-  color: #ffffff;
+.check-icon {
+  color: #28a745;
 }
+
+.cancel-icon {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  z-index: 1; /* Impostiamo un indice z per far sì che l'icona sia sopra il colore di sfondo */
+}
+
 
 
 
