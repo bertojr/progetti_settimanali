@@ -1,1 +1,8 @@
-<p>home works!</p>
+<div class="row">
+  <div
+    class="d-flex justify-content-center col-12"
+    *ngFor="let todo of todosArr"
+  >
+    <app-single-item [todo]="todoItem"></app-single-item>
+  </div>
+</div>

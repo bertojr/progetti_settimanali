@@ -1,0 +1,14 @@
+<input type="checkbox" name="completed" [(ngModel)]="todoItem.completed" />
+<li
+  class="list-group-item"
+  [ngClass]="{
+    'bg-success': todoItem.completed,
+    'bg-danger': !todoItem.completed
+  }"
+>
+  <h3>{{ todoItem.todo }}</h3>
+  <p>
+    Assegnato a:
+    <span> </span>
+  </p>
+</li>
