@@ -1,24 +1,5 @@
 {
-  "users": [
-    {
-      "email": "paulo@paulo.com",
-      "password": "$2a$10$FuTzEFayDRk91p3MhLnCAePqYR4Awqwf.g6SM3/JNIQAt/Y4D5qRS",
-      "name": "Paulo",
-      "id": 1
-    },
-    {
-      "email": "paulo@gmail.com",
-      "password": "$2a$10$uQKN3KRvZZagkJ2ScwLs8exnZv7OlcB8g8Fp2yeP8.xingHmtgZcS",
-      "name": "paulo",
-      "id": 2
-    },
-    {
-      "email": "1020bertone@gmail.com",
-      "password": "$2a$10$zUXdEJpJNb6bOOPfEAISfe5mr.eF9h42/5cXH9q84NEGMlhXiM4qC",
-      "name": "Daniele",
-      "id": 3
-    }
-  ],
+  "users": [],
   "movies": [
     {
       "id": 1,
@@ -78,7 +59,7 @@
       ],
       "durata": "121 min",
       "paese": "Stati Uniti d'America",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/it/1/14/Locandinasith.jpg"
+      "posterUrl": "https://m.media-amazon.com/images/I/71hGkhrj9kL._AC_UF1000,1000_QL80_.jpg"
     },
     {
       "id": 5,
@@ -93,7 +74,7 @@
       ],
       "durata": "142 min",
       "paese": "Stati Uniti d'America",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      "posterUrl": "https://m.media-amazon.com/images/I/711xW80aSGL._AC_UF1000,1000_QL80_.jpg"
     },
     {
       "id": 6,
@@ -108,7 +89,7 @@
       ],
       "durata": "142 min",
       "paese": "Stati Uniti d'America",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      "posterUrl": "https://m.media-amazon.com/images/I/617CD+sLC-L._AC_UF1000,1000_QL80_.jpg"
     },
     {
       "id": 7,
@@ -123,11 +104,11 @@
       ],
       "durata": "142 min",
       "paese": "Stati Uniti d'America",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      "posterUrl": "https://lumiere-a.akamaihd.net/v1/images/avco_payoff_1-sht_v7_lg_32e68793.jpeg?region=0%2C89%2C1620%2C1615"
     },
     {
       "id": 8,
-      "titolo": "Star Wars: Episodio VIII - L'ascesa di Skywalker",
+      "titolo": "Star Wars: Episodio VIII - L'ultimo Jedi",
       "regista": "Gerge Lucas",
       "anno": 2017,
       "genere": [
@@ -138,13 +119,13 @@
       ],
       "durata": "142 min",
       "paese": "Stati Uniti d'America",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      "posterUrl": "https://lumiere-a.akamaihd.net/v1/images/sb_dolby_worldwide_handout_13x19_v3_lg_use_this_one_cc3cc869.jpeg?region=0%2C0%2C821%2C1200"
     },
     {
       "id": 9,
-      "titolo": "Star Wars: Episodio IX - Gli ultimi Jedi",
+      "titolo": "Star Wars: Episodio IX - L'ascesa di Skywalker",
       "regista": "Gerge Lucas",
-      "anno": 1019,
+      "anno": 2019,
       "genere": [
         "Azione",
         "Fantascienza",
@@ -153,28 +134,8 @@
       ],
       "durata": "142 min",
       "paese": "Stati Uniti d'America",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      "posterUrl": "https://pad.mymovies.it/img/image/?image=https://pad.mymovies.it/cinemanews/2019/162038/locandina-ver.jpg&size=400"
     }
   ],
-  "favorite-movies": [
-    {
-      "userId": 1,
-      "movie": {
-        "id": 1,
-        "titolo": "Star Wars: Episodio I - La minaccia fantasma",
-        "regista": "Gerge Lucas",
-        "anno": 1999,
-        "genere": [
-          "Azione",
-          "Fantascienza",
-          "Fantastico",
-          "Avventura"
-        ],
-        "durata": "136 min",
-        "paese": "Stati Uniti d'America",
-        "posterUrl": "https://upload.wikimedia.org/wikipedia/it/d/db/Locandinafantasma.jpg"
-      },
-      "id": 1
-    }
-  ]
+  "favorite-movies": []
 }

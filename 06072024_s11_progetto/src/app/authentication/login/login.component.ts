@@ -10,8 +10,8 @@ import { iAuthData } from '../../models/auth-data';
 })
 export class LoginComponent {
   authData: iAuthData = {
-    email: 'paulo@paulo.com',
-    password: 'password',
+    email: '',
+    password: '',
   };
   constructor(private authSvc: AuthenticationService, private router: Router) {}
 

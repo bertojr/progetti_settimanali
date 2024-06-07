@@ -25,7 +25,6 @@ export class ProfileComponent {
           .getFavouriteMoviesByUserId(this.user.id)
           .subscribe((movies) => {
             this.favouriteMovies = movies;
-            console.log(this.favouriteMovies);
           });
       }
     });

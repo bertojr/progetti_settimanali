@@ -28,7 +28,6 @@ export class ListMoviesComponent {
           .getFavouriteMoviesByUserId(this.idUserLoggato)
           .subscribe((favMovies) => {
             this.favoriteMoviesArr = favMovies;
-            console.log(this.favoriteMoviesArr);
           });
       }
     });
@@ -41,7 +40,6 @@ export class ListMoviesComponent {
     const favouriteMovie = this.favoriteMoviesArr.find(
       (fav) => fav.movie.id == movie.id
     );
-    console.log(favouriteMovie);
 
     if (favouriteMovie) {
       this.favouriteMovieSvc.delete(favouriteMovie.id).subscribe(() => {
