@@ -1,1 +1,21 @@
-<p>profile works!</p>
+<div class="row">
+  <div class="col-4" *ngFor="let favouriteMovie of favouriteMovies">
+    <div class="card">
+      <img
+        class="card-img-top"
+        [src]="favouriteMovie.movie.posterUrl"
+        alt="Title"
+      />
+      <div class="card-body">
+        <h4 class="card-title">{{ favouriteMovie.movie.titolo }}</h4>
+        <p class="card-text">{{ favouriteMovie.movie.anno }}</p>
+        <button
+          class="btn btn-danger"
+          (click)="removeFromFavourite(favouriteMovie.id)"
+        >
+          Rimuovi dai preferiti
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

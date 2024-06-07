@@ -11,6 +11,12 @@
       "password": "$2a$10$uQKN3KRvZZagkJ2ScwLs8exnZv7OlcB8g8Fp2yeP8.xingHmtgZcS",
       "name": "paulo",
       "id": 2
+    },
+    {
+      "email": "1020bertone@gmail.com",
+      "password": "$2a$10$zUXdEJpJNb6bOOPfEAISfe5mr.eF9h42/5cXH9q84NEGMlhXiM4qC",
+      "name": "Daniele",
+      "id": 3
     }
   ],
   "movies": [
@@ -152,34 +158,80 @@
   ],
   "favorite-movies": [
     {
-      "id": 1,
-      "titolo": "Star Wars: Episodio I - La minaccia fantasma",
-      "regista": "Gerge Lucas",
-      "anno": 1999,
-      "genere": [
-        "Azione",
-        "Fantascienza",
-        "Fantastico",
-        "Avventura"
-      ],
-      "durata": "136 min",
-      "paese": "Stati Uniti d'America",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/it/d/db/Locandinafantasma.jpg"
+      "userId": 1,
+      "movie": {
+        "id": 7,
+        "titolo": "Star Wars: Episodio VII - Il risveglio della forza",
+        "regista": "Gerge Lucas",
+        "anno": 2015,
+        "genere": [
+          "Azione",
+          "Fantascienza",
+          "Fantastico",
+          "Avventura"
+        ],
+        "durata": "142 min",
+        "paese": "Stati Uniti d'America",
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      },
+      "id": 1
     },
     {
-      "id": 2,
-      "titolo": "Star Wars: Episodio II - L'attacco dei cloni",
-      "regista": "Gerge Lucas",
-      "anno": 2002,
-      "genere": [
-        "Azione",
-        "Fantascienza",
-        "Fantastico",
-        "Avventura"
-      ],
-      "durata": "142 min",
-      "paese": "Stati Uniti d'America",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      "userId": 1,
+      "movie": {
+        "id": 9,
+        "titolo": "Star Wars: Episodio IX - Gli ultimi Jedi",
+        "regista": "Gerge Lucas",
+        "anno": 1019,
+        "genere": [
+          "Azione",
+          "Fantascienza",
+          "Fantastico",
+          "Avventura"
+        ],
+        "durata": "142 min",
+        "paese": "Stati Uniti d'America",
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      },
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "movie": {
+        "id": 1,
+        "titolo": "Star Wars: Episodio I - La minaccia fantasma",
+        "regista": "Gerge Lucas",
+        "anno": 1999,
+        "genere": [
+          "Azione",
+          "Fantascienza",
+          "Fantastico",
+          "Avventura"
+        ],
+        "durata": "136 min",
+        "paese": "Stati Uniti d'America",
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/it/d/db/Locandinafantasma.jpg"
+      },
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "movie": {
+        "id": 5,
+        "titolo": "Star Wars: Episodio V - L'impero colpisce ancora ",
+        "regista": "Gerge Lucas",
+        "anno": 1980,
+        "genere": [
+          "Azione",
+          "Fantascienza",
+          "Fantastico",
+          "Avventura"
+        ],
+        "durata": "142 min",
+        "paese": "Stati Uniti d'America",
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
+      },
+      "id": 6
     }
   ]
 }
