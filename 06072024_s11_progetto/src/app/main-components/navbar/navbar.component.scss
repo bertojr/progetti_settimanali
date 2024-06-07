@@ -1,0 +1,26 @@
+/* Stile per il navbar-brand */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Stile per il pulsante del toggler */
+.navbar-toggler {
+  border: none;
+}
+
+/* Stile per il link attivo */
+.nav-link.active {
+  font-weight: bold;
+}
+
+/* Aggiunta spazio tra gli elementi del menu */
+.navbar-nav > li {
+  margin-right: 20px;
+}
+
+/* Stile per il pulsante di logout */
+.navbar-nav .btn-primary {
+  padding: 8px 20px;
+  font-size: 1rem;
+}

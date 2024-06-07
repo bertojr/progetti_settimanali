@@ -1,0 +1,79 @@
+
+
+.container {
+  margin-top: 50px; /* Spazio dalla parte superiore della pagina */
+}
+
+.movie-card {
+  background: rgba(255, 255, 255, 0.8); /* Sfondi delle card in bianco con trasparenza */
+  border: none;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 10px; /* Angoli arrotondati */
+  overflow: hidden;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Ombra più morbida e ampia al passaggio del mouse */
+  }
+}
+
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 100%;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  color: white; /* Colore del testo bianco */
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.favourite-btn {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Aggiunta di uno stile hover per le icone */
+.favourite-btn .fas {
+  font-size: 1.5rem; /* Dimensione dell'icona */
+}
+
+.favourite-btn .fa-heart {
+  color: #28a745; /* Colore verde per il cuore pieno */
+}
+
+.favourite-btn .fa-heart-broken {
+  color: #dc3545; /* Colore rosso per il cuore spezzato */
+}
+
+
+
+

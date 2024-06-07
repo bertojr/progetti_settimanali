@@ -2,6 +2,7 @@ import { FavouriteMovieService } from './../../services/favourite-movie.service'
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { iFavouriteMovie } from '../../models/favourite-movie';
+import { iUser } from '../../models/user';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,7 @@ import { iFavouriteMovie } from '../../models/favourite-movie';
 })
 export class ProfileComponent {
   favouriteMovies: iFavouriteMovie[] = [];
-  idUserLoggato!: number;
+  user!: iUser;
   constructor(
     private authSvc: AuthenticationService,
     private favouriteMovieSvc: FavouriteMovieService
@@ -19,9 +20,9 @@ export class ProfileComponent {
   ngOnInit() {
     this.authSvc.user$.subscribe((user) => {
       if (user) {
-        this.idUserLoggato = user.id;
+        this.user = user;
         this.favouriteMovieSvc
-          .getFavouriteMoviesByUserId(this.idUserLoggato)
+          .getFavouriteMoviesByUserId(this.user.id)
           .subscribe((movies) => {
             this.favouriteMovies = movies;
             console.log(this.favouriteMovies);

@@ -1,0 +1,23 @@
+.user-list-item {
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.user-list-item:hover {
+  transform: translateY(-5px);
+}
+
+.user-list-item .btn {
+  font-size: 14px;
+}
+
+.user-list-item h5 {
+  margin-bottom: 5px;
+}
+
+.user-list-item p {
+  margin-bottom: 0;
+}

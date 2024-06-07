@@ -1,21 +1,22 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-lg bg-info">
   <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <button
-      class="navbar-toggler d-lg-none"
+      class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#collapsibleNavId"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="isLoggedIn">
           <a
-            class="nav-link active"
+            class="nav-link"
             routerLink="/"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -38,7 +39,9 @@
           >
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
-          <button class="btn btn-primary" (click)="logout()">Logout</button>
+          <button class="btn btn-primary ml-3" (click)="logout()">
+            Logout
+          </button>
         </li>
       </ul>
     </div>

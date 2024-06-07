@@ -1,27 +1,54 @@
-<div class="mb-3">
-  <label for="" class="form-label">Nome</label>
-  <input
-    [(ngModel)]="newUser.name"
-    type="text"
-    name="nome"
-    class="form-control"
-    placeholder="Inserisci il tuo nome"
-  />
-  <label for="" class="form-label">Email</label>
-  <input
-    [(ngModel)]="newUser.email"
-    type="email"
-    name="email"
-    class="form-control"
-    placeholder="Inserisci la tua email"
-  />
-  <label for="" class="form-label">Password</label>
-  <input
-    [(ngModel)]="newUser.password"
-    type="password"
-    name="password"
-    class="form-control"
-    placeholder="Password"
-  />
-  <button class="btn btn-primary" (click)="register()">Registrati</button>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Registrati</h2>
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Nome</label>
+              <input
+                [(ngModel)]="newUser.name"
+                type="text"
+                id="nome"
+                name="nome"
+                class="form-control"
+                placeholder="Inserisci il tuo nome"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                [(ngModel)]="newUser.email"
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Inserisci la tua email"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                [(ngModel)]="newUser.password"
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                placeholder="Password"
+              />
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary btn-lg" (click)="register()">
+                Registrati
+              </button>
+            </div>
+          </form>
+          <div class="text-center mt-3">
+            <p>Hai già un account? <a routerLink="/auth">Accedi</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
