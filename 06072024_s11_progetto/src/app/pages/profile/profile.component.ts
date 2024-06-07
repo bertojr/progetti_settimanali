@@ -10,6 +10,7 @@ import { iFavouriteMovie } from '../../models/favourite-movie';
 })
 export class ProfileComponent {
   favouriteMovies: iFavouriteMovie[] = [];
+  idUserLoggato!: number;
   constructor(
     private authSvc: AuthenticationService,
     private favouriteMovieSvc: FavouriteMovieService
@@ -17,15 +18,17 @@ export class ProfileComponent {
 
   ngOnInit() {
     this.authSvc.user$.subscribe((user) => {
-      this.favouriteMovieSvc
-        .getFavouriteMoviesByUserId(user?.id)
-        .subscribe((movies) => {
-          this.favouriteMovies = movies;
-          console.log(this.favouriteMovies);
-        });
+      if (user) {
+        this.idUserLoggato = user.id;
+        this.favouriteMovieSvc
+          .getFavouriteMoviesByUserId(this.idUserLoggato)
+          .subscribe((movies) => {
+            this.favouriteMovies = movies;
+            console.log(this.favouriteMovies);
+          });
+      }
     });
   }
-
   removeFromFavourite(id: number): void {
     this.favouriteMovieSvc.delete(id).subscribe(() => {
       this.favouriteMovies = this.favouriteMovies.filter(

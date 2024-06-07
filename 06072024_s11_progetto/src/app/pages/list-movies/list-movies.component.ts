@@ -1,8 +1,9 @@
+import { FavouriteMovieService } from './../../services/favourite-movie.service';
+import { iFavouriteMovie } from './../../models/favourite-movie';
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { iMovie } from '../../models/movie';
 import { MovieService } from '../../services/movie.service';
-import { FavouriteMovieService } from '../../services/favourite-movie.service';
 
 @Component({
   selector: 'app-list-movies',
@@ -11,6 +12,8 @@ import { FavouriteMovieService } from '../../services/favourite-movie.service';
 })
 export class ListMoviesComponent {
   moviesArr: iMovie[] = [];
+  favoriteMoviesArr: iFavouriteMovie[] = [];
+  idUserLoggato!: number;
   constructor(
     private movieSvc: MovieService,
     private authSvc: AuthenticationService,
@@ -18,14 +21,44 @@ export class ListMoviesComponent {
   ) {}
 
   ngOnInit() {
+    this.authSvc.user$.subscribe((user) => {
+      if (user) {
+        this.idUserLoggato = user.id;
+        this.favouriteMovieSvc
+          .getFavouriteMoviesByUserId(this.idUserLoggato)
+          .subscribe((favMovies) => {
+            this.favoriteMoviesArr = favMovies;
+            console.log(this.favoriteMoviesArr);
+          });
+      }
+    });
     this.movieSvc.getMovies().subscribe((movies) => {
       this.moviesArr = movies;
     });
   }
 
-  addToFavourite(movie: iMovie): void {
-    this.authSvc.user$.subscribe((user) => {
-      this.favouriteMovieSvc.create(user?.id, movie).subscribe();
-    });
+  toggleFavourite(movie: iMovie) {
+    const favouriteMovie = this.favoriteMoviesArr.find(
+      (fav) => fav.movie.id == movie.id
+    );
+    console.log(favouriteMovie);
+
+    if (favouriteMovie) {
+      this.favouriteMovieSvc.delete(favouriteMovie.id).subscribe(() => {
+        this.favoriteMoviesArr = this.favoriteMoviesArr.filter(
+          (fav) => fav.id !== favouriteMovie.id
+        );
+      });
+    } else {
+      this.favouriteMovieSvc
+        .create(this.idUserLoggato, movie)
+        .subscribe((movies) => {
+          this.favoriteMoviesArr.push(movies);
+        });
+    }
+  }
+
+  isFavourite(movie: iMovie): boolean {
+    return this.favoriteMoviesArr.some((fav) => fav.movie.id == movie.id);
   }
 }

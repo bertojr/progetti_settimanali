@@ -5,10 +5,16 @@
       <div class="card-body">
         <h4 class="card-title">{{ movie.titolo }}</h4>
         <p class="card-text">{{ movie.anno }}</p>
-        <button class="btn btn-success" (click)="addToFavourite(movie)">
-          Add to favourite
+        <button
+          class="btn"
+          [ngClass]="{
+            'btn-success': !isFavourite(movie),
+            'btn-danger': isFavourite(movie)
+          }"
+          (click)="toggleFavourite(movie)"
+        >
+          {{ isFavourite(movie) ? "Rimuovi" : "Aggiungi" }}
         </button>
-        <button class="btn btn-danger">Rimuovi dai preferiti</button>
       </div>
     </div>
   </div>

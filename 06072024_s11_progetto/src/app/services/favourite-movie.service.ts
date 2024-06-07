@@ -11,10 +11,7 @@ export class FavouriteMovieService {
   urlApi: string = 'http://localhost:3000/favorite-movies';
   constructor(private http: HttpClient) {}
 
-  create(
-    userId: string | undefined,
-    movie: iMovie
-  ): Observable<iFavouriteMovie> {
+  create(userId: number, movie: iMovie): Observable<iFavouriteMovie> {
     const favouriteMovie = { userId, movie };
     return this.http.post<iFavouriteMovie>(this.urlApi, favouriteMovie);
   }
@@ -22,9 +19,7 @@ export class FavouriteMovieService {
     return this.http.delete<iFavouriteMovie>(`${this.urlApi}/${id}`);
   }
 
-  getFavouriteMoviesByUserId(
-    userId: string | undefined
-  ): Observable<iFavouriteMovie[]> {
+  getFavouriteMoviesByUserId(userId: number): Observable<iFavouriteMovie[]> {
     return this.http.get<iFavouriteMovie[]>(`${this.urlApi}?userId=${userId}`);
   }
 }
