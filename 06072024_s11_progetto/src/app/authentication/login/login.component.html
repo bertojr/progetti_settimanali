@@ -1,0 +1,20 @@
+<div class="mb-3">
+  <label for="" class="form-label">Email</label>
+  <input
+    [(ngModel)]="authData.email"
+    type="email"
+    name="email"
+    class="form-control"
+    placeholder="Inserisci la tua email"
+  />
+  <label for="" class="form-label">Password</label>
+  <input
+    [(ngModel)]="authData.password"
+    type="password"
+    name="password"
+    class="form-control"
+    placeholder="Password"
+  />
+  <button class="btn btn-primary" (click)="login()">Accedi</button>
+  <button class="btn btn-primary" routerLink="register">Registrati</button>
+</div>

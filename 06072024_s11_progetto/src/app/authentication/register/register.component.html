@@ -1,0 +1,27 @@
+<div class="mb-3">
+  <label for="" class="form-label">Nome</label>
+  <input
+    [(ngModel)]="newUser.name"
+    type="text"
+    name="nome"
+    class="form-control"
+    placeholder="Inserisci il tuo nome"
+  />
+  <label for="" class="form-label">Email</label>
+  <input
+    [(ngModel)]="newUser.email"
+    type="email"
+    name="email"
+    class="form-control"
+    placeholder="Inserisci la tua email"
+  />
+  <label for="" class="form-label">Password</label>
+  <input
+    [(ngModel)]="newUser.password"
+    type="password"
+    name="password"
+    class="form-control"
+    placeholder="Password"
+  />
+  <button class="btn btn-primary" (click)="register()">Registrati</button>
+</div>
