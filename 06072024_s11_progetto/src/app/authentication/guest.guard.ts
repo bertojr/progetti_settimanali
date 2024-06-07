@@ -11,16 +11,16 @@ import { AuthenticationService } from './authentication.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationGuard {
+export class GuestGuard {
   constructor(private authSvc: AuthenticationService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
-    if (this.authSvc.syncIsLoggedIn) {
+    if (!this.authSvc.syncIsLoggedIn) {
       return true;
     } else {
-      this.router.navigate(['/auth']);
+      this.router.navigate(['/']);
       return false;
     }
   }

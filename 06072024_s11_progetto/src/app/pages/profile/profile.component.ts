@@ -27,6 +27,10 @@ export class ProfileComponent {
   }
 
   removeFromFavourite(id: number): void {
-    this.favouriteMovieSvc.delete(id).subscribe();
+    this.favouriteMovieSvc.delete(id).subscribe(() => {
+      this.favouriteMovies = this.favouriteMovies.filter(
+        (movie) => movie.id != id
+      );
+    });
   }
 }

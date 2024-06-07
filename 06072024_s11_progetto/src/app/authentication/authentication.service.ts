@@ -34,6 +34,7 @@ export class AuthenticationService {
       tap((data) => {
         this.authDataSubject.next(data.user);
         localStorage.setItem('accessData', JSON.stringify(data));
+        this.autoLogout();
       })
     );
   }
@@ -59,5 +60,20 @@ export class AuthenticationService {
     if (this.jwtHelper.isTokenExpired(accessData.accessToken)) return;
 
     this.authDataSubject.next(accessData.user);
+    this.autoLogout();
+  }
+
+  autoLogout(): void {
+    const accessData = this.getAccessData();
+
+    if (!accessData) return;
+
+    const expDate = this.jwtHelper.getTokenExpirationDate(
+      accessData.accessToken
+    ) as Date;
+
+    const expMs = expDate.getTime() - new Date().getTime();
+
+    setTimeout(this.logout, expMs);
   }
 }

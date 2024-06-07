@@ -158,44 +158,6 @@
   ],
   "favorite-movies": [
     {
-      "userId": 1,
-      "movie": {
-        "id": 7,
-        "titolo": "Star Wars: Episodio VII - Il risveglio della forza",
-        "regista": "Gerge Lucas",
-        "anno": 2015,
-        "genere": [
-          "Azione",
-          "Fantascienza",
-          "Fantastico",
-          "Avventura"
-        ],
-        "durata": "142 min",
-        "paese": "Stati Uniti d'America",
-        "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
-      },
-      "id": 1
-    },
-    {
-      "userId": 1,
-      "movie": {
-        "id": 9,
-        "titolo": "Star Wars: Episodio IX - Gli ultimi Jedi",
-        "regista": "Gerge Lucas",
-        "anno": 1019,
-        "genere": [
-          "Azione",
-          "Fantascienza",
-          "Fantastico",
-          "Avventura"
-        ],
-        "durata": "142 min",
-        "paese": "Stati Uniti d'America",
-        "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
-      },
-      "id": 3
-    },
-    {
       "userId": 2,
       "movie": {
         "id": 1,
