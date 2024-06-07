@@ -156,5 +156,25 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/it/2/25/Locandinacloni.jpg"
     }
   ],
-  "favorite-movies": []
+  "favorite-movies": [
+    {
+      "userId": 1,
+      "movie": {
+        "id": 1,
+        "titolo": "Star Wars: Episodio I - La minaccia fantasma",
+        "regista": "Gerge Lucas",
+        "anno": 1999,
+        "genere": [
+          "Azione",
+          "Fantascienza",
+          "Fantastico",
+          "Avventura"
+        ],
+        "durata": "136 min",
+        "paese": "Stati Uniti d'America",
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/it/d/db/Locandinafantasma.jpg"
+      },
+      "id": 1
+    }
+  ]
 }

@@ -74,6 +74,20 @@
   color: #dc3545; /* Colore rosso per il cuore spezzato */
 }
 
+/* CSS per il bottone Dettagli */
+
+.btn-primary {
+  font-size: 1.2rem; /* Aumenta la dimensione del testo */
+  padding: 10px 20px; /* Aggiungi spazio intorno al testo */
+  border-radius: 5px; /* Angoli arrotondati */
+  transition: all 0.3s; /* Aggiungi una transizione */
+  width: 100px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px); /* Sposta leggermente il bottone verso l'alto al passaggio del mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiungi un'ombra al passaggio del mouse */
+}
 
 
 

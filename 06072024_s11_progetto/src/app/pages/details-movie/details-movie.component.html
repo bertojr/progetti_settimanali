@@ -1,1 +1,31 @@
-<p>details-movie works!</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="movie-details">
+        <h2 class="text-center mb-4">Dettaglio del Film</h2>
+        <div class="row" *ngIf="movie">
+          <div class="col-md-4">
+            <img
+              [src]="movie.posterUrl"
+              alt="Copertina Film"
+              class="movie-cover"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="movie-info">
+              <p><strong>Titolo:</strong> {{ movie.titolo }}</p>
+              <p><strong>Anno:</strong> {{ movie.anno }}</p>
+              <p>
+                <strong>Genere:</strong>
+                <span *ngFor="let genere of movie.genere">{{ genere }}, </span>
+              </p>
+              <p><strong>Regista:</strong> {{ movie.regista }}</p>
+              <p><strong>Durata:</strong> {{ movie.durata }}</p>
+              <p><strong>Paese:</strong> {{ movie.paese }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

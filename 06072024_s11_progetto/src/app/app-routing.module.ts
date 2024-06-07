@@ -37,7 +37,7 @@ const routes: Routes = [
     canActivateChild: [AuthenticationGuard],
   },
   {
-    path: 'details-movie',
+    path: 'movie-detail/:id',
     loadChildren: () =>
       import('./pages/details-movie/details-movie.module').then(
         (m) => m.DetailsMovieModule
