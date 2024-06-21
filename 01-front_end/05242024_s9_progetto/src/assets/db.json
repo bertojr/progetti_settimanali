@@ -1,0 +1,56 @@
+[
+  {
+    "brand": "Fiat",
+    "brandLogo": "https://upload.wikimedia.org/wikipedia/it/thumb/9/9e/Logo_della_Fiat.svg/2048px-Logo_della_Fiat.svg.png",
+    "model": "500L",
+    "modelImage": "https://picsum.photos/200/300?random=1",
+    "year": 2015,
+    "price": 7500,
+    "available": false
+  },
+  {
+    "brand": "Fiat",
+    "brandLogo": "https://upload.wikimedia.org/wikipedia/it/thumb/9/9e/Logo_della_Fiat.svg/2048px-Logo_della_Fiat.svg.png",
+    "model": "500 Abarth",
+    "modelImage": "https://picsum.photos/200/300?random=2",
+    "year": 2010,
+    "price": 3500,
+    "available": true
+  },
+  {
+    "brand": "Ford",
+    "brandLogo": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Ford-Motor-Company-Logo.png",
+    "model": "Taurus",
+    "modelImage": "https://picsum.photos/200/300?random=3",
+    "year": 2009,
+    "price": 5200,
+    "available": false
+  },
+  {
+    "brand": "Ford",
+    "brandLogo": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Ford-Motor-Company-Logo.png",
+    "model": "Focus",
+    "modelImage": "https://picsum.photos/200/300?random=4",
+    "year": 2014,
+    "price": 9700,
+    "available": true
+  },
+  {
+    "brand": "Audi",
+    "brandLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Audi-Logo_2016.svg/640px-Audi-Logo_2016.svg.png",
+    "model": "A3",
+    "modelImage": "https://picsum.photos/200/300?random=5",
+    "year": 2012,
+    "price": 4300,
+    "available": true
+  },
+  {
+    "brand": "Audi",
+    "brandLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Audi-Logo_2016.svg/640px-Audi-Logo_2016.svg.png",
+    "model": "Q7",
+    "modelImage": "https://picsum.photos/200/300?random=6",
+    "year": 2020,
+    "price": 41700,
+    "available": false
+  }
+]
