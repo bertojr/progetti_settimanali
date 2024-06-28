@@ -1,0 +1,17 @@
+﻿
+@model _06282024_s2_progetto.Models.Product;
+@{
+    ViewData["Title"] = "Dettaglio prodotto";
+}
+
+<h1>@Model.Name</h1>
+
+<div class="product-details">
+    <img src="@Model.CoverImage" alt="@Model.Name" class="cover-image"/>
+    <p>@Model.Price.ToString() €</p>
+    <p>@Model.Description</p>
+    <div class="additional-images">
+        <img src="@Model.AdditionalImage1" name="@Model.Name" class="additional-image" />
+        <img src="@Model.AdditionalImage2" name="@Model.Name" class="additional-image" />
+    </div>
+</div>

@@ -21,7 +21,12 @@ public class HomeController : Controller
 
     public IActionResult Details(int id)
     {
-        return View();
+        var product = ProductRepository.GetProductById(id);
+        if (product == null)
+        {
+            return NotFound();
+        }
+        return View(product);
     }
 
     public IActionResult Privacy()
