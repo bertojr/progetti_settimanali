@@ -50,6 +50,13 @@ public class HomeController : Controller
         return View(newProduct);
     }
 
+    [HttpPost]
+    public IActionResult Delete(int id)
+    {
+        ProductRepository.Delete(id);
+        return RedirectToAction(nameof(Index));
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

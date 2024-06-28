@@ -17,8 +17,8 @@ namespace _06282024_s2_progetto.Models
         [Required]
         public string CoverImage { get; set; }
         
-        public string AdditionalImage1 { get; set; }
-        public string AdditionalImage2 { get; set; }
+        public string? AdditionalImage1 { get; set; }
+        public string? AdditionalImage2 { get; set; }
     }
 }
 
