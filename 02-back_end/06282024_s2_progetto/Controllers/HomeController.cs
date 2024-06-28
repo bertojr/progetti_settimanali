@@ -33,6 +33,22 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(Product newProduct)
+    {
+        if (ModelState.IsValid)
+        {
+            ProductRepository.AddProduct(newProduct);
+            return RedirectToAction(nameof(Index));
+        }
+        return View(newProduct);
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
