@@ -15,6 +15,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        var products = ProductRepository.GetAllProducts();
+        return View(products);
+    }
+
+    public IActionResult Details(int id)
+    {
         return View();
     }
 
