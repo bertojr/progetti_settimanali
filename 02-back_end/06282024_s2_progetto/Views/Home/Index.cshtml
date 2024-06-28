@@ -4,14 +4,18 @@
 }
 
 <h1>Lista prodotti</h1>
-<div class="product-list">
+<div class="row">
     @foreach (var product in Model)
     {
-        <div class="product">
-            <img src="@product.CoverImage" alt="@product.Name" class="cover-image"/>
-            <h2>@product.Name</h2>
-            <p>Price: @product.Price.ToString() €</p>
-            <button><a href="@Url.Action("Details", new { id = product.Id })"> Dettagli</a></button>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="@product.CoverImage" class="card-img-top" alt="@product.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Price €</p>
+                    <a href="@Url.Action("Details", new { id = product.Id })" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
         </div>
     }
 </div>

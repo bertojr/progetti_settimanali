@@ -18,8 +18,8 @@
 				"progettata per la velocità, ed ecco una scarpa da campioni " +
 				"pronta per mostrare il tuo talento al mondo.",
 				CoverImage = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/216ff4ca-0012-46c7-baa0-80d6ec2084e1/scarpa-da-calcio-a-taglio-alto-fg-mercurial-superfly-9-elite-Vpvx79.png",
-				AdditionalImage1 = "",
-				AdditionalImage2 = "",
+				AdditionalImage1 = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f62ae579-a690-4fea-a115-b1450a6b49f2/scarpa-da-calcio-a-taglio-alto-fg-mercurial-superfly-9-elite-Vpvx79.png",
+				AdditionalImage2 = "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f2bbc910-4adc-45ca-abce-19ab5571b9ee/scarpa-da-calcio-a-taglio-alto-fg-mercurial-superfly-9-elite-Vpvx79.png",
 
             });
 		}

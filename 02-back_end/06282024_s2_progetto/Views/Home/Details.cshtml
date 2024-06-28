@@ -4,14 +4,24 @@
     ViewData["Title"] = "Dettaglio prodotto";
 }
 
-<h1>@Model.Name</h1>
-
-<div class="product-details">
-    <img src="@Model.CoverImage" alt="@Model.Name" class="cover-image"/>
-    <p>@Model.Price.ToString() €</p>
-    <p>@Model.Description</p>
-    <div class="additional-images">
-        <img src="@Model.AdditionalImage1" name="@Model.Name" class="additional-image" />
-        <img src="@Model.AdditionalImage2" name="@Model.Name" class="additional-image" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.CoverImage" class="img-fluid mb-4" alt="@Model.Name">
+        </div>
+        <div class="col-md-6">
+            <h1>@Model.Name</h1>
+            <p class="text-muted">@Model.Price €</p>
+            <p>@Model.Description</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <h3>Immagini aggiuntive</h3>
+        <div class="col-md-6">
+            <img src="@Model.AdditionalImage1" class="img-fluid mb-4" alt="@Model.Name">
+        </div>
+        <div class="col-md-6">
+            <img src="@Model.AdditionalImage2" class="img-fluid mb-4" alt="@Model.Name">
+        </div>
     </div>
 </div>
