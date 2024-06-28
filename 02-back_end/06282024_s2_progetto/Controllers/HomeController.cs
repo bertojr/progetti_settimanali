@@ -7,10 +7,12 @@ namespace _06282024_s2_progetto.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IWebHostEnvironment webHostEnvironment)
     {
         _logger = logger;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     public IActionResult Index()
@@ -40,10 +42,17 @@ public class HomeController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Product newProduct)
+    public async Task<IActionResult> Create(Product newProduct)
     {
         if (ModelState.IsValid)
         {
+            // NON SONO RIUSCITO A FAR FUNZIONARE L'UPLOAD DELL'IMMAGINE
+            /* 
+            if(newProduct.CoverImageFile != null)
+            {
+                string uniqueFileName = await UploadedFile(newProduct.CoverImageFile);
+                newProduct.CoverImage = uniqueFileName;
+            }*/
             ProductRepository.AddProduct(newProduct);
             return RedirectToAction(nameof(Index));
         }
@@ -62,5 +71,35 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    /*
+    private async Task<string> UploadedFile(IFormFile file)
+    {
+        string uniqueFileName = null;
+
+        if(file != null)
+        {
+            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+            uniqueFileName = Guid.NewGuid().ToString() + "-" + file.FileName;
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+            _logger.LogInformation($"Saving file to {filePath}");
+
+            try
+            {
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+                _logger.LogInformation("File saved successfully");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Error saving file: {ex.Message}");
+            }
+            
+        }
+
+        return uniqueFileName;
+    }*/
 }
 

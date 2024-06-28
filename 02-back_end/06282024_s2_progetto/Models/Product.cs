@@ -15,9 +15,13 @@ namespace _06282024_s2_progetto.Models
         [StringLength(1000)]
         public string Description { get; set; }
         [Required]
+        [Url]
         public string CoverImage { get; set; }
-        
+        //public IFormFile CoverImageFile { get; set; }
+
+        [Url]
         public string? AdditionalImage1 { get; set; }
+        [Url]
         public string? AdditionalImage2 { get; set; }
     }
 }
