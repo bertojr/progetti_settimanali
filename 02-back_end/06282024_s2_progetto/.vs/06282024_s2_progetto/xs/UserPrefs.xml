@@ -1,4 +1,41 @@
 ﻿<Properties StartupConfiguration="{621266F7-464C-4438-92E2-97AE385B32A6}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HomeController.cs">
+    <Files>
+      <File FileName="Models/Product.cs" Line="24" Column="13" />
+      <File FileName="Views/Home/Create.cshtml" Line="18" Column="49" />
+      <File FileName="Controllers/HomeController.cs" Line="45" Column="43" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="8" Column="78" />
+      <File FileName="appsettings.json" Line="9" Column="22" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="06282024_s2_progetto">
+            <Node name="06282024_s2_progetto" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.06282024__s2__progetto FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.06282024__s2__progetto PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
