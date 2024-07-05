@@ -1,0 +1,22 @@
+﻿INSERT INTO Anagrafica (Cognome, Nome, Indirizzo, Citta, CAP, CF)
+VALUES
+    ('Rossi', 'Mario', 'Via Roma 1', 'Roma', '00100', 'RSSMRA80A01H501C'),
+    ('Bianchi', 'Paola', 'Corso Italia 5', 'Milano', '20121', 'BNCPLA75C42F839U'),
+    ('Verdi', 'Luigi', 'Viale dei Fiori 10', 'Napoli', '80100', 'VRDLGI67E14H501Y'),
+    ('Russo', 'Giulia', 'Piazza Garibaldi 3', 'Torino', '10100', 'RSSGLI85D41A662S'),
+    ('Ferrari', 'Giovanni', 'Via Dante 7', 'Firenze', '50100', 'FRRGNN70A01H501T'),
+    ('Gallo', 'Maria', 'Largo dei Tigli 2', 'Bologna', '40100', 'GLLMRA82A41H501U'),
+    ('Conti', 'Antonio', 'Via Verdi 15', 'Genova', '16100', 'CNTNTN75A03F839G'),
+    ('Marini', 'Chiara', 'Corso Vittorio 8', 'Palermo', '90100', 'MRNCHR85B56A662Q'),
+    ('Leone', 'Fabio', 'Piazza Kennedy 6', 'Catania', '95100', 'LNBFBA79C11H501R'),
+    ('Moretti', 'Roberta', 'Via della Pace 20', 'Verona', '37100', 'MRTBRB75D22F839S'),
+    ('Caruso', 'Alessandro', 'Corso Umberto 30', 'Trieste', '34100', 'CRSLSN80E44A662T'),
+    ('Santoro', 'Laura', 'Via Garibaldi 18', 'Padova', '35100', 'SNLLRA77F15H501L'),
+    ('Rinaldi', 'Marco', 'Largo dei Fiori 9', 'Bari', '70100', 'RNDMRC78G33F839M'),
+    ('De Luca', 'Sara', 'Via Roma 25', 'Taranto', '74100', 'DLCSRA73H58A662N'),
+    ('Villa', 'Luca', 'Piazza dei Mille 12', 'Pisa', '56100', 'VLLLCU82I29F839O'),
+    ('Fontana', 'Elisa', 'Corso Milano 3', 'Modena', '41100', 'FNTLSA79L46A662P'),
+    ('Barbieri', 'Matteo', 'Via Garibaldi 5', 'Como', '22100', 'BRBMTE84M17H501Q'),
+    ('Ferri', 'Giorgio', 'Largo Leopardi 4', 'Cagliari', '09100', 'FRRGGO81N12F839R'),
+    ('Costa', 'Simona', 'Viale Kennedy 11', 'Venezia', '30100', 'CSTSMN76O25A662S'),
+    ('Galli', 'Paolo', 'Via Verdi 7', 'Messina', '98100', 'GLLPLO74P38F839T');

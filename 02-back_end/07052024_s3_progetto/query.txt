@@ -1,0 +1,131 @@
+CREAZIONE TABELLE
+
+CREATE TABLE [dbo].[Anagrafica]
+(
+	[IdAnagrafica] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Cognome] NVARCHAR(50) NOT NULL,
+	Nome NVARCHAR(50) NOT NULL,
+	Indirizzo NVARCHAR(120) NULL,
+	Cita NVARCHAR(80) NULL,
+	CAP CHAR(5) NULL,
+	CF CHAR(16) NOT NULL,
+)
+
+------------------------------------------
+CREATE TABLE [dbo].[Tipo_Violazione]
+(
+	[IdViolazione] INT NOT NULL PRIMARY KEY,
+	Descrizione NVARCHAR(255) NOT NULL,
+)
+
+-------------------------------------------
+
+CREATE TABLE [dbo].[Verbale]
+(
+	[IdVerbale] INT NOT NULL PRIMARY KEY IDENTITY,
+	DataViolazione DATETIME2 NOT NULL,
+	IndirizzoViolazione NVARCHAR(100) NOT NULL,
+	Nominativo_Agente NVARCHAR(100) NOT NULL,
+	DataTrascrizioneVerbale DATETIME2 NOT NULL DEFAULT GETDATE(),
+	Importo DECIMAL(10, 2) NULL DEFAULT 0,
+	DecurtamentoPunti INT NULL DEFAULT 0, 
+    	[FK_Anagrafica] INT NOT NULL, 
+    	[FK_Violazione] INT NOT NULL,
+)
+
+
+INSERIMENTO DATI
+
+INSERT INTO Anagrafica (Cognome, Nome, Indirizzo, Citta, CAP, CF)
+VALUES
+    ('Rossi', 'Mario', 'Via Roma 1', 'Roma', '00100', 'RSSMRA80A01H501C'),
+    ('Bianchi', 'Paola', 'Corso Italia 5', 'Milano', '20121', 'BNCPLA75C42F839U'),
+    ('Verdi', 'Luigi', 'Viale dei Fiori 10', 'Napoli', '80100', 'VRDLGI67E14H501Y'),
+    ('Russo', 'Giulia', 'Piazza Garibaldi 3', 'Torino', '10100', 'RSSGLI85D41A662S'),
+    ('Ferrari', 'Giovanni', 'Via Dante 7', 'Firenze', '50100', 'FRRGNN70A01H501T'),
+    ('Gallo', 'Maria', 'Largo dei Tigli 2', 'Bologna', '40100', 'GLLMRA82A41H501U'),
+    ('Conti', 'Antonio', 'Via Verdi 15', 'Genova', '16100', 'CNTNTN75A03F839G'),
+    ('Marini', 'Chiara', 'Corso Vittorio 8', 'Palermo', '90100', 'MRNCHR85B56A662Q'),
+    ('Leone', 'Fabio', 'Piazza Kennedy 6', 'Catania', '95100', 'LNBFBA79C11H501R'),
+    ('Moretti', 'Roberta', 'Via della Pace 20', 'Verona', '37100', 'MRTBRB75D22F839S'),
+    ('Caruso', 'Alessandro', 'Corso Umberto 30', 'Trieste', '34100', 'CRSLSN80E44A662T'),
+    ('Santoro', 'Laura', 'Via Garibaldi 18', 'Padova', '35100', 'SNLLRA77F15H501L'),
+    ('Rinaldi', 'Marco', 'Largo dei Fiori 9', 'Bari', '70100', 'RNDMRC78G33F839M'),
+    ('De Luca', 'Sara', 'Via Roma 25', 'Taranto', '74100', 'DLCSRA73H58A662N'),
+    ('Villa', 'Luca', 'Piazza dei Mille 12', 'Pisa', '56100', 'VLLLCU82I29F839O'),
+    ('Fontana', 'Elisa', 'Corso Milano 3', 'Modena', '41100', 'FNTLSA79L46A662P'),
+    ('Barbieri', 'Matteo', 'Via Garibaldi 5', 'Como', '22100', 'BRBMTE84M17H501Q'),
+    ('Ferri', 'Giorgio', 'Largo Leopardi 4', 'Cagliari', '09100', 'FRRGGO81N12F839R'),
+    ('Costa', 'Simona', 'Viale Kennedy 11', 'Venezia', '30100', 'CSTSMN76O25A662S'),
+    ('Galli', 'Paolo', 'Via Verdi 7', 'Messina', '98100', 'GLLPLO74P38F839T');
+--------------------------------------------------------------------------------------
+INSERT INTO Tipo_Violazione (Descrizione)
+VALUES
+    ('Eccesso di velocità'),
+    ('Guida sotto l''effetto di alcol/droghe'),
+    ('Mancato rispetto del segnale di stop'),
+    ('Mancato utilizzo del casco'),
+    ('Parcheggio in divieto di sosta');
+--------------------------------------------------------------------------------------
+
+INSERT INTO Verbale (DataViolazione, IndirizzoViolazione, Nominativo_Agente, DataTrascrizioneVerbale, Importo, DecurtamentoPunti, FK_Anagrafica, FK_Violazione)
+VALUES
+    ('2023-05-15 10:30:00', 'Via Roma 1', 'Agente Rossi', '2023-05-15 11:00:00', 50.00, 3, 1, 1),
+    ('2023-06-20 14:15:00', 'Corso Italia 5', 'Agente Bianchi', '2023-06-20 15:00:00', 80.00, 4, 2, 4),
+    ('2023-07-10 08:45:00', 'Viale dei Fiori 10', 'Agente Verdi', '2023-07-10 09:30:00', 100.00, 5, 3, 2),
+    ('2023-08-05 16:00:00', 'Piazza Garibaldi 3', 'Agente Russo', '2023-08-05 16:30:00', 120.00, 6, 4, 3),
+    ('2023-09-12 09:00:00', 'Via Dante 7', 'Agente Ferrari', '2023-09-12 09:30:00', 60.00, 2, 5, 5),
+    ('2023-10-25 11:20:00', 'Piazza Kennedy 6', 'Agente Leone', '2023-10-25 12:00:00', 70.00, 4, 8, 3),
+    ('2023-11-08 14:30:00', 'Largo dei Tigli 2', 'Agente Gallo', '2023-11-08 15:00:00', 90.00, 5, 6, 2),
+    ('2023-12-15 09:10:00', 'Via Verdi 7', 'Agente Galli', '2023-12-15 09:30:00', 60.00, 2, 19, 5),
+    ('2024-01-20 16:45:00', 'Corso Vittorio 8', 'Agente Marini', '2024-01-20 17:15:00', 100.00, 6, 7, 1),
+    ('2024-02-05 08:00:00', 'Via Garibaldi 18', 'Agente Santoro', '2024-02-05 08:30:00', 80.00, 3, 12, 4);
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+QUERY
+
+-- 1) Conteggio dei verbali trascritti --
+SELECT COUNT(*) as [Totale verbali trascritti]
+FROM Verbale
+
+-- 2) Conteggio dei verbali trascritti raggruppati per anagrafe --
+SELECT a.Nome, a.Cognome, COUNT(v.IdVerbale) as [Verbali]
+FROM Verbale as v RIGHT JOIN Anagrafica as a ON v.FK_Anagrafica = a.IdAnagrafica
+GROUP BY a.Nome, a.Cognome
+
+-- 3) Conteggio dei verbali trascritti raggruppati per tipo di violazione --
+SELECT vi.Descrizione, COUNT(v.IdVerbale) as [Totale verbali]
+FROM Tipo_Violazione as vi JOIN Verbale as v ON vi.IdViolazione = v.FK_Violazione
+GROUP BY vi.Descrizione
+
+-- 4) Totale dei punti decurtati per ogni anagrafe --
+SELECT a.Nome, a.Cognome, SUM(v.DecurtamentoPunti) as [Decurtamento punti totali]
+FROM Anagrafica as a JOIN  Verbale as v ON a.IdAnagrafica = v.FK_Anagrafica
+GROUP BY a.Nome, a.Cognome
+
+-- 5) Cognome, Nome, Data violazione, Indirizzo violazione, importo e punti decurtati 
+-- per tutti gli anagrafici residenti a Palermo
+SELECT a.Nome, a.Cognome, v.DataViolazione, v.IndirizzoViolazione, v.Importo, v.DecurtamentoPunti
+FROM Anagrafica as a JOIN Verbale as v ON v.FK_Anagrafica = a.IdAnagrafica
+WHERE a.Citta LIKE 'palermo'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
