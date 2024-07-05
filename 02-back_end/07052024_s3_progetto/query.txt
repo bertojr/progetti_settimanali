@@ -111,6 +111,44 @@ SELECT a.Nome, a.Cognome, v.DataViolazione, v.IndirizzoViolazione, v.Importo, v.
 FROM Anagrafica as a JOIN Verbale as v ON v.FK_Anagrafica = a.IdAnagrafica
 WHERE a.Citta LIKE 'palermo'
 
+-- 6) Cognome, Nome, Indirizzo, Data violazione, importo e punti decurtati 
+-- per le violazioni fatte tra il febbraio 2009 e luglio 2009
+SELECT a.Nome, a.Cognome, a.Indirizzo, v.DataViolazione, v.Importo, v.DecurtamentoPunti
+FROM Anagrafica as a JOIN Verbale as v ON v.FK_Anagrafica = a.IdAnagrafica
+WHERE v.DataViolazione BETWEEN '2009-02-01' AND '2009-07-31'
+
+-- 7) Totale degli importi per ogni anagrafico --
+SELECT a.Nome, a.Cognome, SUM(v.Importo) as [Totale importi multe]
+FROM Anagrafica as a LEFT JOIN Verbale as v ON a.IdAnagrafica = v.FK_Anagrafica
+GROUP BY a.Nome, a.Cognome
+
+-- 8) Visualizzazione di tutti gli anagrafici residenti a Palermo --
+SELECT *
+FROM Anagrafica as a
+WHERE a.Citta LIKE 'palermo'
+
+-- 9) Query che visualizzi Data violazione, Importo e decurtamento punti relativi ad una certa data --
+SELECT v.DataViolazione, v.Importo, v.DecurtamentoPunti
+FROM Verbale as v
+WHERE CONVERT(DATE, v.DataViolazione) = '2023-10-25'
+
+-- 10) Conteggio delle violazioni contestate raggruppate per Nominativo dell’agente di Polizia
+SELECT v.Nominativo_Agente, COUNT(v.IdVerbale) as [Totali verbali contestati]
+FROM Verbale as v
+GROUP BY V.Nominativo_Agente
+
+-- 11) Cognome, Nome, Indirizzo, Data violazione, Importo e punti decurtati --
+-- per tutte le violazioni che superino il decurtamento di 5 punti --
+SELECT a.Nome, a.Cognome, v.IndirizzoViolazione, v.DataViolazione, v.Importo, v.DecurtamentoPunti
+FROM Verbale as v JOIN Anagrafica as a ON v.FK_Anagrafica = a.IdAnagrafica
+WHERE v.DecurtamentoPunti > 5
+
+-- 12) Cognome, Nome, Indirizzo, Data violazione, Importo e punti decurtati --
+-- per tutte le violazioni che superino l’importo di 400 euro --
+SELECT a.Nome, a.Cognome, a.Indirizzo, v.DataViolazione, v.Importo, v.DecurtamentoPunti
+FROM Anagrafica as a JOIN Verbale as v ON a.IdAnagrafica = v.FK_Anagrafica
+WHERE v.Importo > 400
+
 
 
 
