@@ -1,0 +1,1 @@
+﻿-- 8) Visualizzazione di tutti gli anagrafici residenti a Palermo --

@@ -1,0 +1,1 @@
+﻿-- 9) Query che visualizzi Data violazione, Importo e decurtamento punti relativi ad una certa data --
