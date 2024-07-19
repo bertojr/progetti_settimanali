@@ -8,10 +8,13 @@
         public string NominativoAgente { get; set; }
         public DateTime DataTrascrizioneVerbale { get; set; }
         public decimal Importo { get; set; }
-        public int DecurtamentoPunti {  get; set; }
+        public int DecurtamentoPunti { get; set; }
         public int AnagraficaID { get; set; }
         public Anagrafica Anagrafica { get; set; }
         public int ViolazioneID { get; set; }
         public TipoViolazione TipoViolazione { get; set; }
+
+        public int TotaleVerbali { get; set; }
+        public int TotalePuntiDecurtati { get; set; }
     }
 }

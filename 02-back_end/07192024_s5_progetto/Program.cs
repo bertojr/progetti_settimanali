@@ -1,6 +1,10 @@
+using _07192024_s5_progetto.DAO;
+using _07192024_s5_progetto.Interface;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IAnagraficaDAO, AnagraficaDAO>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

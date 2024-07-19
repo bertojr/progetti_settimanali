@@ -1,0 +1,21 @@
+﻿@model IEnumerable<_07192024_s5_progetto.Models.Anagrafica>
+
+@{
+    ViewData["Title"] = "Trasgressori";
+}
+
+<h1>Trasgressori</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach(var item in Model)
+{
+    <p>Nome: @item.Nome</p>
+    <p>Cognome: @item.Cognome</p>
+    <p>Indirizzo: @item.Indirizzo</p>
+    <p>Citta: @item.Citta</p>
+    <p>CAP: @item.CAP</p>
+    <p>Codice fiscale: @item.CF</p>
+}
