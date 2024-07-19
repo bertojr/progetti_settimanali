@@ -4,5 +4,26 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <hr />
+    <hr />
+    <a class="nav-link text-dark" asp-action="GetTotalViolationsGroupeByTransgressor">
+        Visualizzare il totale dei verbali trascritti raggruppati per trasgressore
+    </a>
+    <hr />
+    <hr />
+    <a class="nav-link text-dark" asp-action="GetTotalPointsDeductedGroupeByTransgressor">
+        Visualizzare il totale dei punti decurtati raggruppati per trasgressore
+    </a>
+    <hr />
+    <hr />
+    <a class="nav-link text-dark" asp-action="GetViolationsWithAmountGreaterThan400">
+        Visualizzare importo, cognome, nome, data di violazione, e decurtamento punti delle violazioni che superano i 10 punti
+    </a>
+    <hr />
+    <hr />
+    <a class="nav-link text-dark" asp-action="GetViolationsWithPointsGreaterThan10">
+        Visualizzare le violazioni il cui importo è maggiore di 400 euro
+    </a>
+    <hr />
+    <hr />
 </div>

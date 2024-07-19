@@ -93,13 +93,14 @@ namespace _07192024_s5_progetto.DAO
                         Nome = reader.GetString(11),
                         Indirizzo = reader.GetString(12),
                         Citta = reader.GetString(13),
-                        CF = reader.GetString(14),
+                        CAP = reader.GetString(14),
+                        CF = reader.GetString(15),
                     };
 
                     var tipoViolazione = new TipoViolazione
                     {
-                        ViolazioneID = reader.GetInt32(15),
-                        Descrizione = reader.GetString(16),
+                        ViolazioneID = reader.GetInt32(16),
+                        Descrizione = reader.GetString(17),
                     };
 
                     result.Add(new Verbale
@@ -212,14 +213,10 @@ namespace _07192024_s5_progetto.DAO
                         Nome = reader.GetString(11),
                         Indirizzo = reader.GetString(12),
                         Citta = reader.GetString(13),
-                        CF = reader.GetString(14),
+                        CAP = reader.GetString(14),
+                        CF = reader.GetString(15),
                     };
 
-                    var tipoViolazione = new TipoViolazione
-                    {
-                        ViolazioneID = reader.GetInt32(15),
-                        Descrizione = reader.GetString(16),
-                    };
                     result.Add(new Verbale
                     {
                         Id = reader.GetInt32(0),
@@ -232,7 +229,6 @@ namespace _07192024_s5_progetto.DAO
                         AnagraficaID = reader.GetInt32(7),
                         ViolazioneID = reader.GetInt32(8),
                         Anagrafica = anagrafica,
-                        TipoViolazione = tipoViolazione,
                     });
                 }
                 return result;
@@ -262,14 +258,10 @@ namespace _07192024_s5_progetto.DAO
                         Nome = reader.GetString(11),
                         Indirizzo = reader.GetString(12),
                         Citta = reader.GetString(13),
-                        CF = reader.GetString(14),
+                        CAP = reader.GetString(14),
+                        CF = reader.GetString(15),
                     };
 
-                    var tipoViolazione = new TipoViolazione
-                    {
-                        ViolazioneID = reader.GetInt32(15),
-                        Descrizione = reader.GetString(16),
-                    };
                     result.Add(new Verbale
                     {
                         Id = reader.GetInt32(0),
@@ -282,7 +274,6 @@ namespace _07192024_s5_progetto.DAO
                         AnagraficaID = reader.GetInt32(7),
                         ViolazioneID = reader.GetInt32(8),
                         Anagrafica = anagrafica,
-                        TipoViolazione = tipoViolazione,
                     });
                 }
                 return result;
