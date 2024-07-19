@@ -1,0 +1,16 @@
+﻿@model IEnumerable<_07192024_s5_progetto.Models.Verbale>
+
+@{
+    ViewData["Title"] = "Totale punti decurtati";
+}
+
+<h1>Totale punti decurtati</h1>
+
+@foreach (var item in Model)
+{
+    <h3>Dati Anagrafici</h3>
+    <p>Nome: @item.Anagrafica.Nome</p>
+    <p>Cognome: @item.Anagrafica.Cognome</p>
+    <p>Codice fiscale: @item.Anagrafica.CF</p>
+    <p>Totale punti decurtati: @item.TotalePuntiDecurtati</p>
+}

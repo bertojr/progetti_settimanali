@@ -4,6 +4,6 @@ namespace _07192024_s5_progetto.Interface
 {
     public interface ITipoViolazioneDAO
     {
-        List<TipoViolazione> GetAll();
+        public List<TipoViolazione> GetAll();
     }
 }

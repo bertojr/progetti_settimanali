@@ -5,6 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IAnagraficaDAO, AnagraficaDAO>();
+builder.Services.AddScoped<IVerbaleDAO, VerbaleDAO>();
+builder.Services.AddScoped<ITipoViolazioneDAO, TipoViolazioneDAO>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
