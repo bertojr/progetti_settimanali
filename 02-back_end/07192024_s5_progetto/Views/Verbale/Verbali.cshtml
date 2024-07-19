@@ -1,0 +1,32 @@
+﻿@model IEnumerable<_07192024_s5_progetto.Models.Verbale>
+
+@{
+    ViewData["Title"] = "Trasgressori";
+}
+
+<h1>Trasgressori</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model)
+{
+    <h3>Dati Anagrafici</h3>
+    <p>Nome: @item.Anagrafica.Nome</p>
+    <p>Cognome: @item.Anagrafica.Cognome</p>
+    <p>Indirizzo: @item.Anagrafica.Indirizzo</p>
+    <p>Citta: @item.Anagrafica.Citta</p>
+    <p>CAP: @item.Anagrafica.CAP</p>
+    <p>Codice fiscale: @item.Anagrafica.CF</p>
+    <hr />
+    <hr />
+    <h3>Dati Verbale</h3>
+    <p>Verbale N° @item.Id</p>
+    <p>Data violazione @item.DataViolazione</p>
+    <p>Indirizzo violazione: @item.IndirizzoViolazione</p>
+    <p>Nominativo agente: @item.NominativoAgente</p>
+    <p>Data trascrizione verbale: @item.DataTrascrizioneVerbale</p>
+    <p>Punti decurtati: @item.DecurtamentoPunti</p>
+    <p>Tipo di violazione: @item.TipoViolazione.Descrizione</p>
+}

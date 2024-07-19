@@ -64,7 +64,7 @@ namespace _07192024_s5_progetto.DAO
                 cmd.Parameters.AddWithValue("@importo", newVerbale.Importo);
                 cmd.Parameters.AddWithValue("@decurtamentoPunti", newVerbale.DecurtamentoPunti);
                 cmd.Parameters.AddWithValue("@anagraficaId", newVerbale.AnagraficaID);
-                cmd.Parameters.AddWithValue("@violazioneId", newVerbale.violazioneId);
+                cmd.Parameters.AddWithValue("@violazioneId", newVerbale.ViolazioneID);
                 newVerbale.Id = (int)cmd.ExecuteScalar();
                 return newVerbale;
             }
@@ -94,13 +94,13 @@ namespace _07192024_s5_progetto.DAO
                         Indirizzo = reader.GetString(12),
                         Citta = reader.GetString(13),
                         CF = reader.GetString(14),
-                    }; 
+                    };
 
                     var tipoViolazione = new TipoViolazione
                     {
                         ViolazioneID = reader.GetInt32(15),
                         Descrizione = reader.GetString(16),
-                    }
+                    };
 
                     result.Add(new Verbale
                     {
@@ -171,15 +171,17 @@ namespace _07192024_s5_progetto.DAO
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+
+                    var anagrafica = new Anagrafica
+                    {
+                        AnagraficaID = reader.GetInt32(0),
+                        Cognome = reader.GetString(2),
+                        Nome = reader.GetString(1),
+                        CF = reader.GetString(3),
+                    };
                     result.Add(new Verbale
                     {
-                        new Anagrafica
-                        {
-                            AnagraficaID = reader.GetInt32(0),
-                            Cognome = reader.GetString(2),
-                            Nome = reader.GetString(1),
-                            CF = reader.GetString(3),
-                        },
+                        Anagrafica = anagrafica,
                         TotaleVerbali = reader.GetInt32(4),
                     });
                 }
@@ -203,32 +205,34 @@ namespace _07192024_s5_progetto.DAO
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    var anagrafica = new Anagrafica
+                    {
+                        AnagraficaID = reader.GetInt32(9),
+                        Cognome = reader.GetString(10),
+                        Nome = reader.GetString(11),
+                        Indirizzo = reader.GetString(12),
+                        Citta = reader.GetString(13),
+                        CF = reader.GetString(14),
+                    };
+
+                    var tipoViolazione = new TipoViolazione
+                    {
+                        ViolazioneID = reader.GetInt32(15),
+                        Descrizione = reader.GetString(16),
+                    };
                     result.Add(new Verbale
                     {
-
-                            Id = reader.GetInt32(0),
-                            DataViolazione = reader.GetDateTime(1),
-                            IndirizzoViolazione = reader.GetString(2),
-                            NominativoAgente = reader.GetString(3),
-                            DataTrascrizioneVerbale = reader.GetDateTime(4),
-                            Importo = reader.GetDecimal(5),
-                            DecurtamentoPunti = reader.GetInt32(6),
-                            AnagraficaID = reader.GetInt32(7),
-                            ViolazioneID = reader.GetInt32(8),
-                        new Anagrafica
-                        {
-                            AnagraficaID = reader.GetInt32(9),
-                            Cognome = reader.GetString(10),
-                            Nome = reader.GetString(11),
-                            Indirizzo = reader.GetString(12),
-                            Citta = reader.GetString(13),
-                            CF = reader.GetString(14),
-                        },
-                        new TipoViolazione
-                        {
-                            ViolazioneID = reader.GetInt32(15),
-                            Descrizione = reader.GetString(16),
-                        },
+                        Id = reader.GetInt32(0),
+                        DataViolazione = reader.GetDateTime(1),
+                        IndirizzoViolazione = reader.GetString(2),
+                        NominativoAgente = reader.GetString(3),
+                        DataTrascrizioneVerbale = reader.GetDateTime(4),
+                        Importo = reader.GetDecimal(5),
+                        DecurtamentoPunti = reader.GetInt32(6),
+                        AnagraficaID = reader.GetInt32(7),
+                        ViolazioneID = reader.GetInt32(8),
+                        Anagrafica = anagrafica,
+                        TipoViolazione = tipoViolazione,
                     });
                 }
                 return result;
@@ -242,13 +246,50 @@ namespace _07192024_s5_progetto.DAO
 
         public List<Verbale> GetViolationsWithPointsGreaterThan10()
         {
+            var result = new List<Verbale>();
             try
             {
+                using var conn = new SqlConnection(connectionString);
+                conn.Open();
+                using var cmd = new SqlCommand(QUERY_GET_VIOLATIONS_WITH_POINTS_GREATER_THAN_10, conn);
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var anagrafica = new Anagrafica
+                    {
+                        AnagraficaID = reader.GetInt32(9),
+                        Cognome = reader.GetString(10),
+                        Nome = reader.GetString(11),
+                        Indirizzo = reader.GetString(12),
+                        Citta = reader.GetString(13),
+                        CF = reader.GetString(14),
+                    };
 
+                    var tipoViolazione = new TipoViolazione
+                    {
+                        ViolazioneID = reader.GetInt32(15),
+                        Descrizione = reader.GetString(16),
+                    };
+                    result.Add(new Verbale
+                    {
+                        Id = reader.GetInt32(0),
+                        DataViolazione = reader.GetDateTime(1),
+                        IndirizzoViolazione = reader.GetString(2),
+                        NominativoAgente = reader.GetString(3),
+                        DataTrascrizioneVerbale = reader.GetDateTime(4),
+                        Importo = reader.GetDecimal(5),
+                        DecurtamentoPunti = reader.GetInt32(6),
+                        AnagraficaID = reader.GetInt32(7),
+                        ViolazioneID = reader.GetInt32(8),
+                        Anagrafica = anagrafica,
+                        TipoViolazione = tipoViolazione,
+                    });
+                }
+                return result;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Exception creating new violation");
+                logger.LogError(ex, "Exception query GetTotalPointsDeductedGroupeByTransgressor");
                 throw;
             }
         }
