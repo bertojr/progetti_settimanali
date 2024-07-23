@@ -1,0 +1,81 @@
+﻿CREATE TABLE [dbo].[Guests] (
+    [CF]                  CHAR (16)     NOT NULL,
+    [FirstName]           NVARCHAR (50) NOT NULL,
+    [LastName]            NVARCHAR (50) NOT NULL,
+    [CityOfResidence]     NVARCHAR (50) NULL,
+    [ProvinceOfResidence] NVARCHAR (50) NULL,
+    [Email]               NVARCHAR (50) NULL,
+    [Phone]               CHAR (20)     NULL,
+    [MobilePhone]         CHAR (20)     NULL,
+    CONSTRAINT [PK_Clienti] PRIMARY KEY CLUSTERED ([CF] ASC)
+);
+
+CREATE TABLE [dbo].[Rooms] (
+    [RoomID]      INT            IDENTITY (1, 1) NOT NULL,
+    [Description] NVARCHAR (MAX) NULL,
+    [Typology]    NVARCHAR (30)  NOT NULL,
+    CONSTRAINT [PK_Rooms] PRIMARY KEY CLUSTERED ([RoomID] ASC)
+);
+
+CREATE TABLE [dbo].[Reservations] (
+    [ReservationID]       INT             IDENTITY (1, 1) NOT NULL,
+    [CF]                  CHAR (16)       NOT NULL,
+    [RoomID]              INT             NOT NULL,
+    [ReservationDate]     DATETIME2 (7)   CONSTRAINT [DEFAULT_Reservations_ReservationDate] DEFAULT (getdate()) NULL,
+    [Year]                INT             CONSTRAINT [DEFAULT_Reservations_Year] DEFAULT (datepart(year,getdate())) NULL,
+    [CheckInDate]         DATE            NOT NULL,
+    [CheckOutDate]        DATE            NOT NULL,
+    [ConfirmationDeposit] DECIMAL (10, 2) CONSTRAINT [DEFAULT_Reservations_ConfirmationDeposit] DEFAULT ((0)) NOT NULL,
+    [Rate]                DECIMAL (12, 2) CONSTRAINT [DEFAULT_Reservations_Rate] DEFAULT ((0)) NOT NULL,
+    [Details]             NVARCHAR (50)   NULL,
+    CONSTRAINT [PK_Reservations] PRIMARY KEY CLUSTERED ([ReservationID] ASC),
+    CONSTRAINT [FK_Guests] FOREIGN KEY ([CF]) REFERENCES [dbo].[Guests] ([CF]),
+    CONSTRAINT [FK_Room] FOREIGN KEY ([RoomID]) REFERENCES [dbo].[Rooms] ([RoomID])
+);
+
+
+CREATE TABLE [dbo].[Users] (
+    [UserID]       INT            IDENTITY (1, 1) NOT NULL,
+    [FirstName]    NVARCHAR (50)  NULL,
+    [LastName]     NVARCHAR (50)  NULL,
+    [Username]     NVARCHAR (25)  NOT NULL,
+    [Email]        NVARCHAR (50)  NULL,
+    [PasswordHash] NVARCHAR (255) NOT NULL,
+    [PasswordSalt] NVARCHAR (200) NOT NULL,
+    PRIMARY KEY CLUSTERED ([UserID] ASC),
+    CONSTRAINT [UQ_Username] UNIQUE NONCLUSTERED ([Username] ASC)
+);
+
+CREATE TABLE [dbo].[AdditionalServices] (
+    [AdditionalServicesID] INT             IDENTITY (1, 1) NOT NULL,
+    [Description]          NVARCHAR (100)  NOT NULL,
+    [Price]                DECIMAL (10, 2) DEFAULT 0 NULL,
+    PRIMARY KEY CLUSTERED ([AdditionalServicesID] ASC)
+);
+
+CREATE TABLE [dbo].[ServiceReservations] (
+    [ServiceReservationsID] INT             IDENTITY (1, 1) NOT NULL,
+    [ReservationID]         INT             NOT NULL,
+    [AdditionalServiceID]   INT             NOT NULL,
+    [Date]                  DATETIME2 (7)   DEFAULT (getdate()) NULL,
+    [Quantity]              INT             DEFAULT ((0)) NOT NULL,
+    [TotalPrice]            DECIMAL (10, 2) DEFAULT ((0)) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ServiceReservationsID] ASC),
+    CONSTRAINT [FK_AdditionalService] FOREIGN KEY ([AdditionalServiceID]) REFERENCES [dbo].[AdditionalServices] ([AdditionalServicesID]),
+    CONSTRAINT [FK_Reservation] FOREIGN KEY ([ReservationID]) REFERENCES [dbo].[Reservations] ([ReservationID])
+);
+
+CREATE TABLE [dbo].[Roles] (
+    [RoleID]   INT           IDENTITY (1, 1) NOT NULL,
+    [RoleName] NVARCHAR (30) NOT NULL,
+    PRIMARY KEY CLUSTERED ([RoleID] ASC),
+    UNIQUE NONCLUSTERED ([RoleName] ASC)
+);
+
+CREATE TABLE [dbo].[RolesUsers] (
+    [UserID] INT NOT NULL,
+    [RoleID] INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([UserID] ASC, [RoleID] ASC)
+);
+
+

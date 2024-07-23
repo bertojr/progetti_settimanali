@@ -7,4 +7,10 @@
     <RootNamespace>_07232024_s6_progetto</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="sql\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="sql\" />
+  </ItemGroup>
 </Project>
