@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "9VpHOJgGKwS/QzEY4WAgVcwFjA7iS22iHxEuGfWcqQumggqlDx/Yv6BJpcVELj0lsLXZ20GKYoZ54NCcUwKZ6A==",
+  "success": true,
+  "projectFilePath": "/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/07232024_s6_progetto.csproj",
+  "expectedPackageFiles": [
+    "/Users/dany/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.31/microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
+    "/Users/dany/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.31/microsoft.netcore.app.host.osx-arm64.6.0.31.nupkg.sha512",
+    "/Users/dany/.nuget/packages/microsoft.netcore.app.ref/6.0.31/microsoft.netcore.app.ref.6.0.31.nupkg.sha512"
+  ],
+  "logs": []
+}
