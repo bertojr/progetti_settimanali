@@ -1,4 +1,28 @@
 ﻿<Properties StartupConfiguration="{7307386A-5C43-484F-A1CC-003D2AF6D15D}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.07232024__s6__progetto FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.07232024__s6__progetto PreferredExecutionTarget="/Applications/Google Chrome.app" FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/DatabaseHelper.cs">
+    <Files>
+      <File FileName="appsettings.json" Line="9" Column="23" />
+      <File FileName="Services/DatabaseHelper.cs" Line="7" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="07232024_s6_progetto">
+            <Node name="07232024_s6_progetto">
+              <Node name="Services" expanded="True">
+                <Node name="DatabaseHelper.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
