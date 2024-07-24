@@ -1,5 +1,15 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using _07232024_s6_progetto.Services;
 
+var builder = WebApplication.CreateBuilder(args);
+
+
+var connectionString = builder.Configuration.GetConnectionString("HotelReservationsDB");
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
+builder.Services.AddSingleton<DatabaseHelper>(provider =>
+new DatabaseHelper(connectionString, provider.GetRequiredService<ILogger<DatabaseHelper>>()));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

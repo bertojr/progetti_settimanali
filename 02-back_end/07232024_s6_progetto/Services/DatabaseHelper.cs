@@ -1,61 +1,94 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿using System; // Namespace per tipi base come Exception
+using System.Data.SqlClient; // Namespace per interagire con SQL Server
 
-namespace _07232024_s6_progetto.Services
+namespace _07232024_s6_progetto.Services // Namespace dell'applicazione
 {
-	public class DatabaseHelper
-	{
-		private readonly string _connectionString;
+    public class DatabaseHelper // Classe helper per interagire con il database
+    {
+        private readonly string _connectionString; // Stringa di connessione al database
+        private readonly ILogger<DatabaseHelper> _logger;
 
-		public DatabaseHelper(string connectionString)
-		{
-			_connectionString = connectionString;
-		}
+        // Costruttore che accetta una stringa di connessione
+        public DatabaseHelper(string connectionString, ILogger<DatabaseHelper> logger)
+        {
+            _connectionString = connectionString;
+            _logger = logger;
+        }
 
-		private SqlConnection GetConnection()
-		{
-			return new SqlConnection(_connectionString);
-		}
+        // Metodo privato per ottenere una connessione al database
+        private SqlConnection GetConnection()
+        {
+            return new SqlConnection(_connectionString);
+        }
 
-		public List<T> ExecuteQuery<T>(string query, Func<SqlDataReader, T> mapFunction)
-		{
-			var results = new List<T>();
-			using (var conn = GetConnection())
-			{
-                var cmd = new SqlCommand(query, conn);
-                conn.Open();
-                using (var reader = cmd.ExecuteReader())
-				{
-                    while (reader.Read())
+        // Metodo generico per eseguire query che restituiscono dati
+        public List<T> ExecuteQuery<T>(string query, Func<SqlDataReader, T> mapFunction)
+        {
+            var results = new List<T>(); // Lista per memorizzare i risultati della query
+            try
+            {
+                using (var conn = GetConnection()) // Using per garantire che la connessione venga chiusa correttamente
+                {
+                    var cmd = new SqlCommand(query, conn); // Creazione del comando SQL
+                    conn.Open(); // Apertura della connessione
+                    using (var reader = cmd.ExecuteReader()) // Esecuzione della query e ottenimento di un SqlDataReader
                     {
-                        results.Add(mapFunction(reader));
+                        while (reader.Read()) // Iterazione sui risultati della query
+                        {
+                            results.Add(mapFunction(reader)); // Mapping dei risultati con la funzione fornita e aggiunta alla lista
+                        }
                     }
                 }
+                return results; // Ritorno dei risultati
             }
-			return results;
-		}
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, $"Error executing query: {query}");
+                throw;
+            } 
+        }
 
-		public int ExecuteNonQuery(string query, params SqlParameter[] parameter)
-		{
-			using(var conn = GetConnection())
-			{
-				var cmd = new SqlCommand(query, conn);
-				cmd.Parameters.AddRange(parameter);
-				conn.Open();
-				return cmd.ExecuteNonQuery();
-			}
-		}
+        // Metodo per eseguire comandi SQL che non restituiscono righe (INSERT, UPDATE, DELETE)
+        public int ExecuteNonQuery(string query, params SqlParameter[] parameter)
+        {
+            try
+            {
+                using (var conn = GetConnection()) // Using per garantire che la connessione venga chiusa correttamente
+                {
+                    var cmd = new SqlCommand(query, conn); // Creazione del comando SQL
+                    cmd.Parameters.AddRange(parameter); // Aggiunta dei parametri al comando
+                    conn.Open(); // Apertura della connessione
+                    return cmd.ExecuteNonQuery(); // Esecuzione del comando e ritorno del numero di righe interessate
+                }
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, $"Error executing non-query: {query}");
+                throw;
+            }
+            
+        }
 
-		public object ExecuteScalar(string query, params SqlParameter[] parameters)
-		{
-			using(var conn = GetConnection())
-			{
-				var cmd = new SqlCommand(query, conn);
-				cmd.Parameters.AddRange(parameters);
-				conn.Open();
-				return cmd.ExecuteScalar();
-			}
-		}
-	}
+        // Metodo per eseguire comandi SQL che restituiscono un singolo valore
+        public object ExecuteScalar(string query, params SqlParameter[] parameters)
+        {
+            try
+            {
+                using (var conn = GetConnection()) // Using per garantire che la connessione venga chiusa correttamente
+                {
+                    var cmd = new SqlCommand(query, conn); // Creazione del comando SQL
+                    cmd.Parameters.AddRange(parameters); // Aggiunta dei parametri al comando
+                    conn.Open(); // Apertura della connessione
+                    return cmd.ExecuteScalar(); // Esecuzione del comando e ritorno del primo valore della prima riga
+                }
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, $"Error executing scalar: {query}");
+                throw;
+            }
+            
+        }
+    }
 }
 
