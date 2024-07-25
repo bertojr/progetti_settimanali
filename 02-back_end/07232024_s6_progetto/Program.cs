@@ -1,4 +1,6 @@
-﻿using _07232024_s6_progetto.Services;
+﻿using _07232024_s6_progetto.DAO;
+using _07232024_s6_progetto.Interfaces;
+using _07232024_s6_progetto.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,9 @@ builder.Logging.AddConsole();
 
 builder.Services.AddSingleton<DatabaseHelper>(provider =>
 new DatabaseHelper(connectionString, provider.GetRequiredService<ILogger<DatabaseHelper>>()));
+
+builder.Services.AddTransient<GuestDao>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

@@ -10,10 +10,14 @@
   <ItemGroup>
     <None Remove="sql\" />
     <None Remove="Services\" />
+    <None Remove="Interfaces\" />
+    <None Remove="DAO\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="sql\" />
     <Folder Include="Services\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="DAO\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />

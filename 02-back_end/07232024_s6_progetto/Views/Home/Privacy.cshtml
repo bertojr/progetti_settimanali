@@ -1,7 +1,16 @@
-﻿@{
+﻿@model IEnumerable<Guest>
+@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+@foreach (var guest in Model)
+{
+    <p>@guest.GuestID</p>
+    <p>@guest.CF</p>
+    <p>@guest.FirstName</p>
+    <p>@guest.LastName</p>
+    <form asp-action="Delete" asp-route-id="@guest.GuestID" method="post">
+        <button type="submit">Delete</button>
+    </form>
+}
 
