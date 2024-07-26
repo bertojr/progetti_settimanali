@@ -7,7 +7,7 @@
 <h1>Aggiungi Servizio alla Prenotazione</h1>
 
 <form asp-action="AddService" method="post">
-    <input type="hidden" asp-for="ReservationID" />
+    <input type="hidden" asp-for="ReservationID"/>
     <div class="form-group">
         <label for="selectedService">Seleziona Servizio</label>
         <select id="selectedService" asp-for="AdditionalServiceID" class="form-control" asp-items="@(ViewBag.AdditionalServices)"></select>

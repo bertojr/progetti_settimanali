@@ -6,7 +6,7 @@ using _07232024_s6_progetto.Interfaces;
 
 namespace _07232024_s6_progetto.DAO
 {
-	public class ServiceReservationDao : IDao<ServiceReservation>
+	public class ServiceReservationDao : IDao<ServiceReservation>, IServiceReservationDao
 	{
         private readonly DatabaseHelper _databaseHelper;
 
@@ -36,6 +36,13 @@ namespace _07232024_s6_progetto.DAO
         private const string DELETE_SERVICE_RESERVATION =
             "DELETE FROM ServiceReservations " +
             "WHERE ServiceReservationID = @id";
+
+        private const string GET_BY_RESERVATIONID =
+            "SELECT * " +
+            "FROM ServiceReservations as sr " +
+                "JOIN AdditionalServices as a " +
+                    "ON sr.AdditionalServiceID = a.AdditionalServicesID " +
+            "WHERE sr.ReservationID = @id";
 
         public ServiceReservationDao(DatabaseHelper databaseHelper)
         {
@@ -149,6 +156,29 @@ namespace _07232024_s6_progetto.DAO
                     Price = reader.GetDecimal(18)
                 }
             });
+        }
+
+        public List<ServiceReservation> GetByReservationID(int id)
+        {
+            var p = new[]
+            {
+                new SqlParameter("@id", id)
+            };
+            return _databaseHelper.ExecuteQuery(GET_BY_RESERVATIONID, reader => new ServiceReservation
+            {
+                ServiceReservationID = reader.GetInt32(0),
+                ReservationID = reader.GetInt32(1),
+                AdditionalServiceID = reader.GetInt32(2),
+                Date = reader.GetDateTime(3),
+                Quantity = reader.GetInt32(4),
+                TotalPrice = reader.GetDecimal(5),
+                AdditionalService = new AdditionalService
+                {
+                    AdditionalServiceID = reader.GetInt32(6),
+                    Description = reader.GetString(7),
+                    Price = reader.GetDecimal(8)
+                }
+            }, p);
         }
     }
 }

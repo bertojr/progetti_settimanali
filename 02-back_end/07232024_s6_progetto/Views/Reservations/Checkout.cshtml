@@ -1,4 +1,4 @@
-﻿@model _07232024_s6_progetto.Models.Reservation
+﻿@model _07232024_s6_progetto.Models.ReservationViewModel
 
 @{
     ViewData["Title"] = "Checkout Prenotazione";
@@ -8,16 +8,26 @@
 
 <div>
     <h2>Dettaglio Prenotazione</h2>
-    <p><strong>Cliente:</strong> @Model.Guest.FirstName @Model.Guest.LastName - @Model.CF</p>
-    <p><strong>Numero Stanza:</strong> @Model.RoomID</p>
-    <p><strong>Periodo:</strong> @Model.CheckinDate.ToShortDateString() - @Model.CheckoutDate.ToShortDateString()</p>
-    <p><strong>Tariffa Applicata:</strong> @Model.Rate.ToString("C")</p>
-    <p><strong>Caparra Confirmatoria:</strong> @Model.ConfirmationDeposit.ToString("c")</p>
+    <p><strong>Cliente:</strong> @Model.Reservation.Guest.FirstName @Model.Reservation.Guest.LastName - @Model.Reservation.CF</p>
+    <p><strong>Numero Stanza:</strong> @Model.Reservation.RoomID</p>
+    <p><strong>Periodo:</strong> @Model.Reservation.CheckinDate.ToShortDateString() - @Model.Reservation.CheckoutDate.ToShortDateString()</p>
+    <p><strong>Tariffa Applicata:</strong> @Model.Reservation.Rate.ToString("C")</p>
+    <p><strong>Caparra Confirmatoria:</strong> @Model.Reservation.ConfirmationDeposit.ToString("c")</p>
 </div>
 
 <div>
     <h2>Servizi aggiuntivi</h2>
-    <a asp-action="AddService">Aggiungi servizio alla prenotazione</a>
+    <ul>
+        @foreach (var service in Model.AdditionalServices)
+        {
+            <li>@service.AdditionalService.Description - @service.Date - @service.Quantity - @service.TotalPrice</li>
+        }
+    </ul>
+    @{
+        decimal totalAdditionalService = Model.AdditionalServices.Sum(svc => svc.TotalPrice);
+    }
+    <p>Totale servizi aggiuntivi: @totalAdditionalService</p>
+    <a asp-route-id="@Model.Reservation.ReservationID" asp-action="AddService">Aggiungi servizio alla prenotazione</a>
 </div>
 
 <div>
@@ -26,13 +36,13 @@
         @* Calcolo dell'importo totale *@
         @* Importo totale = Tariffa - Caparra + Somma dei servizi aggiuntivi *@
         @{
-            // decimal totalServicesPrice = Model.ServiceReservations.Sum(sr => sr.TotalPrice);
-            decimal totalAmount = Model.Rate - Model.ConfirmationDeposit;
+            decimal totalServicesPrice = Model.AdditionalServices.Sum(svc => svc.TotalPrice);
+            decimal totalAmount = (Model.Reservation.Rate - Model.Reservation.ConfirmationDeposit) + totalServicesPrice;
         }
         <strong>Importo Totale:</strong> @totalAmount.ToString("C")
     </p>
 </div>
 
-<a asp-action="Print" asp-route-id="@Model.ReservationID" class="btn btn-primary">Stampa Dettaglio</a>
+<a asp-action="Print" asp-route-id="@Model.Reservation.ReservationID" class="btn btn-primary">Stampa Dettaglio</a>
 
 

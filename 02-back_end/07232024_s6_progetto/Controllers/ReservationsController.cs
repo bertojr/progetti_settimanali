@@ -37,6 +37,7 @@ namespace _07232024_s6_progetto.Controllers
             ViewBag.Rooms = new SelectList(_roomDao.GetAll(), "RoomID", "RoomID");
             return View(new Reservation
             {
+                Year = DateTime.Now.Year,
                 CheckinDate = DateOnly.FromDateTime(DateTime.Now),
                 CheckoutDate = DateOnly.FromDateTime(DateTime.Now)
             });
@@ -60,19 +61,27 @@ namespace _07232024_s6_progetto.Controllers
         public IActionResult Checkout(int id)
         {
             var reservation = _reservationDao.Read(id);
+            var additionalService = _serviceReservationDao.GetByReservationID(id);
             if (reservation == null) return NotFound();
 
-            return View(reservation);
+            var viewModel = new ReservationViewModel
+            {
+                Reservation = reservation,
+                AdditionalServices = additionalService
+            };
+
+
+            return View(viewModel);
         }
 
-        public IActionResult AddService(int reservationId)
+        public IActionResult AddService(int id)
         {
             var additionalServices = _additionalServiceDao.GetAll();
 
-            ViewBag.ReservationID = reservationId;
+            ViewBag.ReservationID = id;
             ViewBag.AdditionalServices = new SelectList(additionalServices, "AdditionalServiceID", "Description");
 
-            return View(new ServiceReservation { ReservationID = reservationId });
+            return View(new ServiceReservation { ReservationID = id });
         }
 
         [HttpPost]
@@ -82,7 +91,7 @@ namespace _07232024_s6_progetto.Controllers
             model.TotalPrice = model.Quantity * service.Price;
 
             _serviceReservationDao.Create(model);
-            return RedirectToAction("Checkout", new { id = model.ReservationID });
+            return RedirectToAction("Index");
         }
     }
 }
