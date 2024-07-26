@@ -12,12 +12,22 @@
     <None Remove="Services\" />
     <None Remove="Interfaces\" />
     <None Remove="DAO\" />
+    <None Remove="Views\Reservations\" />
+    <None Remove="Views\Rooms\" />
+    <None Remove="Views\Guests\" />
+    <None Remove="Views\Users\" />
+    <None Remove="Views\AdditionalServices\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="sql\" />
     <Folder Include="Services\" />
     <Folder Include="Interfaces\" />
     <Folder Include="DAO\" />
+    <Folder Include="Views\Reservations\" />
+    <Folder Include="Views\Rooms\" />
+    <Folder Include="Views\Guests\" />
+    <Folder Include="Views\Users\" />
+    <Folder Include="Views\AdditionalServices\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />

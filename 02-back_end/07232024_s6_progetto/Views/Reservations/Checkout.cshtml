@@ -1,0 +1,38 @@
+﻿@model _07232024_s6_progetto.Models.Reservation
+
+@{
+    ViewData["Title"] = "Checkout Prenotazione";
+}
+
+<h1>Checkout Prenotazione</h1>
+
+<div>
+    <h2>Dettaglio Prenotazione</h2>
+    <p><strong>Cliente:</strong> @Model.Guest.FirstName @Model.Guest.LastName - @Model.CF</p>
+    <p><strong>Numero Stanza:</strong> @Model.RoomID</p>
+    <p><strong>Periodo:</strong> @Model.CheckinDate.ToShortDateString() - @Model.CheckoutDate.ToShortDateString()</p>
+    <p><strong>Tariffa Applicata:</strong> @Model.Rate.ToString("C")</p>
+    <p><strong>Caparra Confirmatoria:</strong> @Model.ConfirmationDeposit.ToString("c")</p>
+</div>
+
+<div>
+    <h2>Servizi aggiuntivi</h2>
+    <a asp-action="AddService">Aggiungi servizio alla prenotazione</a>
+</div>
+
+<div>
+    <h2>Importo da Saldare</h2>
+    <p>
+        @* Calcolo dell'importo totale *@
+        @* Importo totale = Tariffa - Caparra + Somma dei servizi aggiuntivi *@
+        @{
+            // decimal totalServicesPrice = Model.ServiceReservations.Sum(sr => sr.TotalPrice);
+            decimal totalAmount = Model.Rate - Model.ConfirmationDeposit;
+        }
+        <strong>Importo Totale:</strong> @totalAmount.ToString("C")
+    </p>
+</div>
+
+<a asp-action="Print" asp-route-id="@Model.ReservationID" class="btn btn-primary">Stampa Dettaglio</a>
+
+

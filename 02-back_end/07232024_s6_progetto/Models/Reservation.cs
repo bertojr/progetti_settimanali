@@ -10,7 +10,6 @@ namespace _07232024_s6_progetto.Models
         public int ReservationID { get; set; }
 
         [Required(ErrorMessage = "Il codice fiscale è obbligatorio")]
-        [StringLength(16, MinimumLength = 16, ErrorMessage = "Il cdice fiscale deve essere di 16 caratteri")]
         public string CF { get; set; }
 
         [ForeignKey("CF")]

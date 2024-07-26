@@ -1,0 +1,62 @@
+﻿@model _07232024_s6_progetto.Models.Reservation
+
+@{
+    ViewData["Title"] = "Crea Prenotazione";
+}
+
+<h1>Crea Prenotazione</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="CF" class="control-label"></label>
+        <select asp-for="CF" class="form-control" asp-items="ViewBag.Guests"></select>
+        <span asp-validation-for="CF" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RoomID" class="control-label"></label>
+        <select asp-for="RoomID" class="form-control" asp-items="ViewBag.Rooms"></select>
+        <span asp-validation-for="RoomID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CheckinDate" class="control-label"></label>
+        <input asp-for="CheckinDate" class="form-control" type="date"/>
+        <span asp-validation-for="CheckinDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CheckoutDate" class="control-label"></label>
+        <input asp-for="CheckoutDate" class="form-control" type="date" />
+        <span asp-validation-for="CheckoutDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ConfirmationDeposit" class="control-label"></label>
+        <input asp-for="ConfirmationDeposit" class="form-control" type="number"/>
+        <span asp-validation-for="ConfirmationDeposit" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Rate" class="control-label"></label>
+        <input asp-for="Rate" class="form-control" type="number"/>
+        <span asp-validation-for="Rate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Details" class="control-label"></label>
+        <input asp-for="Details" class="form-control" />
+        <span asp-validation-for="Details" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Crea</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

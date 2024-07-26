@@ -1,0 +1,38 @@
+﻿@model IEnumerable<_07232024_s6_progetto.Models.User>
+
+@{
+    ViewData["Title"] = "Elenco Utenti";
+}
+
+<h1>Elenco Utenti</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.UserID" class="btn btn-warning btn-sm">Modifica</a>
+                    <a asp-action="Delete" asp-route-id="@user.UserID" class="btn btn-danger btn-sm">Elimina</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Aggiungi Nuovo Utente</a>
+
+

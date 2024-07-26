@@ -1,0 +1,46 @@
+﻿@model IEnumerable<_07232024_s6_progetto.Models.Guest>
+
+@{
+    ViewData["Title"] = "Elenco Clienti";
+}
+
+<h1>Elenco Clienti</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codice Fiscale</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Città di Residenza</th>
+            <th>Provincia di Residenza</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Cellulare</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var guest in Model)
+        {
+            <tr>
+                <td>@guest.CF</td>
+                <td>@guest.FirstName</td>
+                <td>@guest.LastName</td>
+                <td>@guest.CityOfResidence</td>
+                <td>@guest.ProvinceOfResidence</td>
+                <td>@guest.Email</td>
+                <td>@guest.Phone</td>
+                <td>@guest.MobilePhone</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@guest.GuestID" class="btn btn-warning btn-sm">Modifica</a>
+                    <a asp-action="Delete" asp-route-id="@guest.GuestID" class="btn btn-danger btn-sm">Elimina</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Aggiungi Nuovo Cliente</a>
+
+

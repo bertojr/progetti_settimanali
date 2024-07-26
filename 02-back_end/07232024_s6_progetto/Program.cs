@@ -13,7 +13,15 @@ builder.Logging.AddConsole();
 builder.Services.AddSingleton<DatabaseHelper>(provider =>
 new DatabaseHelper(connectionString, provider.GetRequiredService<ILogger<DatabaseHelper>>()));
 
-builder.Services.AddTransient<GuestDao>();
+builder.Services
+    .AddTransient<GuestDao>()
+    .AddTransient<ReservationDao>()
+    .AddTransient<RoomDao>()
+    .AddTransient<UserDao>()
+    .AddTransient<ServiceReservationDao>()
+    .AddTransient<RoleUserDao>()
+    .AddTransient<RoleDao>()
+    .AddTransient<AdditionalServiceDao>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

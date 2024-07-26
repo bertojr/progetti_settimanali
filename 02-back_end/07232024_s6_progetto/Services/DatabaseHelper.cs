@@ -22,24 +22,30 @@ namespace _07232024_s6_progetto.Services // Namespace dell'applicazione
         }
 
         // Metodo generico per eseguire query che restituiscono dati
-        public List<T> ExecuteQuery<T>(string query, Func<SqlDataReader, T> mapFunction)
+        public List<T> ExecuteQuery<T>(string query, Func<SqlDataReader, T> mapFunction, SqlParameter[] parameters = null)
         {
             var results = new List<T>(); // Lista per memorizzare i risultati della query
             try
             {
-                using (var conn = GetConnection()) // Using per garantire che la connessione venga chiusa correttamente
+                using (var connection = new SqlConnection(_connectionString))
+                using (var command = new SqlCommand(query, connection))
                 {
-                    var cmd = new SqlCommand(query, conn); // Creazione del comando SQL
-                    conn.Open(); // Apertura della connessione
-                    using (var reader = cmd.ExecuteReader()) // Esecuzione della query e ottenimento di un SqlDataReader
+                    if (parameters != null)
                     {
-                        while (reader.Read()) // Iterazione sui risultati della query
+                        command.Parameters.AddRange(parameters);
+                    }
+
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
                         {
-                            results.Add(mapFunction(reader)); // Mapping dei risultati con la funzione fornita e aggiunta alla lista
+                            results.Add(mapFunction(reader));
                         }
                     }
                 }
-                return results; // Ritorno dei risultati
+
+                return results;
             }
             catch(Exception ex)
             {

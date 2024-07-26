@@ -28,7 +28,7 @@ namespace _07232024_s6_progetto.DAO
                 "JOIN Guests as g " +
                     "ON r.CF = g.CF " +
                 "JOIN Rooms as ro " +
-                    "ON r.RoomID = ro.RoomID" +
+                    "ON r.RoomID = ro.RoomID " +
             "WHERE ReservationID = @id";
         private const string UPDATE_RESERVATION =
             "UPDATE Reservations " +
@@ -53,8 +53,8 @@ namespace _07232024_s6_progetto.DAO
                 new SqlParameter("@roomId", newReservation.RoomID),
                 new SqlParameter("@reservationDate", newReservation.ReservationDate),
                 new SqlParameter("@year", newReservation.Year),
-                new SqlParameter("@CheckInDate", newReservation.CheckinDate),
-                new SqlParameter("@checkOutDate", newReservation.CheckoutDate),
+                new SqlParameter("@ckeckIn", newReservation.CheckinDate.ToDateTime(TimeOnly.MinValue)),
+                new SqlParameter("@checkOut", newReservation.CheckoutDate.ToDateTime(TimeOnly.MinValue)),
                 new SqlParameter("@ConfirmationDeposit", newReservation.ConfirmationDeposit),
                 new SqlParameter("@rate", newReservation.Rate),
                 new SqlParameter("@details", string.IsNullOrEmpty(newReservation.Details)
@@ -82,7 +82,7 @@ namespace _07232024_s6_progetto.DAO
                 CheckinDate = DateOnly.FromDateTime(reader.GetDateTime(5)),
                 CheckoutDate = DateOnly.FromDateTime(reader.GetDateTime(6)),
                 ConfirmationDeposit = reader.GetDecimal(7),
-                Rate = reader.GetInt32(8),
+                Rate = reader.GetDecimal(8),
                 Details = reader.GetString(9),
                 Guest = new Guest
                 {
@@ -102,7 +102,7 @@ namespace _07232024_s6_progetto.DAO
                     Description = reader.IsDBNull(20) ? "" : reader.GetString(20),
                     Typology = reader.GetString(21),
                 }
-            });
+            }, p);
 
             return results.FirstOrDefault();
         }
@@ -147,7 +147,7 @@ namespace _07232024_s6_progetto.DAO
                 CheckinDate = DateOnly.FromDateTime(reader.GetDateTime(5)),
                 CheckoutDate = DateOnly.FromDateTime(reader.GetDateTime(6)),
                 ConfirmationDeposit = reader.GetDecimal(7),
-                Rate = reader.GetInt32(8),
+                Rate = reader.GetDecimal(8),
                 Details = reader.GetString(9),
                 Guest = new Guest
                 {

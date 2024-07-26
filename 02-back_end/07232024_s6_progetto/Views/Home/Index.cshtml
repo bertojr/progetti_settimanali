@@ -4,61 +4,11 @@
     ViewData["Title"] = "Create Guest";
 }
 
-<h1>Create Guest</h1>
-
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="CF" class="control-label"></label>
-        <input asp-for="CF" class="form-control" />
-        <span asp-validation-for="CF" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="FirstName" class="control-label"></label>
-        <input asp-for="FirstName" class="form-control" />
-        <span asp-validation-for="FirstName" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="LastName" class="control-label"></label>
-        <input asp-for="LastName" class="form-control" />
-        <span asp-validation-for="LastName" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="CityOfResidence" class="control-label"></label>
-        <input asp-for="CityOfResidence" class="form-control" />
-        <span asp-validation-for="CityOfResidence" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="ProvinceOfResidence" class="control-label"></label>
-        <input asp-for="ProvinceOfResidence" class="form-control" />
-        <span asp-validation-for="ProvinceOfResidence" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Email" class="control-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Phone" class="control-label"></label>
-        <input asp-for="Phone" class="form-control" />
-        <span asp-validation-for="Phone" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="MobilePhone" class="control-label"></label>
-        <input asp-for="MobilePhone" class="form-control" />
-        <span asp-validation-for="MobilePhone" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-    </div>
-</form>
+<a asp-controller="Reservations" asp-action="Index">Gestione prenotazioni</a>
+<a asp-controller="Rooms" asp-action="Index">Gestione camere</a>
+<a asp-controller="Guests" asp-action="Index">Gestione clienti</a>
+<a asp-controller="Users" asp-action="Index">Gestione Utenti</a>
+<a asp-controller="AdditionalServices" asp-action="Index">Gestione servizi aggiuntivi</a>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

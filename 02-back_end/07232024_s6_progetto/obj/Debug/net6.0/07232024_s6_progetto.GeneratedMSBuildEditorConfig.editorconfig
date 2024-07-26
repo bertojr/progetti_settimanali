@@ -16,6 +16,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/AdditionalServices/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkaXRpb25hbFNlcnZpY2VzL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/AdditionalServices/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkaXRpb25hbFNlcnZpY2VzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Guests/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3Vlc3RzL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Guests/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3Vlc3RzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -24,12 +40,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Reservations/AddService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVzZXJ2YXRpb25zL0FkZFNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Reservations/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVzZXJ2YXRpb25zL0NoZWNrb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Reservations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVzZXJ2YXRpb25zL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Reservations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVzZXJ2YXRpb25zL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Rooms/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9vbXMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Rooms/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9vbXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlcnMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlcnMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/_ViewImports.cshtml]

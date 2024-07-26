@@ -1,0 +1,55 @@
+﻿@model _07232024_s6_progetto.Models.User
+
+@{
+    ViewData["Title"] = "Crea Nuovo Utente";
+}
+
+<h1>Crea Nuovo Utente</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label">Nome</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label">Cognome</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Username" class="control-label">Username</label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PasswordHash" class="control-label">Hash Password (Auto-generated)</label>
+        <input asp-for="PasswordHash" class="form-control" />
+        <span asp-validation-for="PasswordHash" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PasswordSalt" class="control-label">Salt Password (Auto-generated)</label>
+        <input asp-for="PasswordSalt" class="form-control" />
+        <span asp-validation-for="PasswordSalt" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Crea</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

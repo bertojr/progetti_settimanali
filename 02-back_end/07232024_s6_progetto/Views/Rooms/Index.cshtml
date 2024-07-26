@@ -1,0 +1,37 @@
+﻿@model IEnumerable<_07232024_s6_progetto.Models.Room>
+
+@{
+    ViewData["Title"] = "Elenco Camere";
+}
+
+<h1>Elenco Camere</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numero camera</th>
+            <th>Descrizione</th>
+            <th>Tipologia</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td>@room.RoomID</td>
+                <td>@room.Description</td>
+                <td>@room.Typology</td>
+                <td>
+                    <form asp-action="Delete" method="post" asp-route-id="@room.RoomID">
+                        <button type="submit" class="btn btn-danger">Elimina</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Aggiungi Nuova Camera</a>
+
+

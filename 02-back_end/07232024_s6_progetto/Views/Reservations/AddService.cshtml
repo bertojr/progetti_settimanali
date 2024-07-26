@@ -1,0 +1,27 @@
+﻿@model _07232024_s6_progetto.Models.ServiceReservation
+
+@{
+    ViewData["Title"] = "Aggiungi Servizio alla Prenotazione";
+}
+
+<h1>Aggiungi Servizio alla Prenotazione</h1>
+
+<form asp-action="AddService" method="post">
+    <input type="hidden" asp-for="ReservationID" />
+    <div class="form-group">
+        <label for="selectedService">Seleziona Servizio</label>
+        <select id="selectedService" asp-for="AdditionalServiceID" class="form-control" asp-items="@(ViewBag.AdditionalServices)"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity">Quantità</label>
+        <input type="number" asp-for="Quantity" class="form-control" min="1" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Aggiungi</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

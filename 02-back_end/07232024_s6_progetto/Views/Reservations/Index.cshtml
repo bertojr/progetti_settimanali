@@ -1,0 +1,58 @@
+﻿@model IEnumerable<_07232024_s6_progetto.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Prenotazioni";
+}
+
+<h1>Prenotazioni</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Codice Prenotazione</th>
+            <th>Codice Fiscale</th>
+            <th>Nome Ospite</th>
+            <th>Numero Stanza</th>
+            <th>Data Prenotazione</th>
+            <th>Anno</th>
+            <th>Data Check-in</th>
+            <th>Data Check-out</th>
+            <th>Deposito Conferma</th>
+            <th>Tariffa</th>
+            <th>Dettagli</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td>@reservation.ReservationID</td>
+                <td>@reservation.CF</td>
+                <td>@reservation.Guest?.FirstName @reservation.Guest?.LastName</td>
+                <td>@reservation.RoomID</td>
+                <td>@reservation.ReservationDate.ToString("yyyy-MM-dd")</td>
+                <td>@reservation.Year</td>
+                <td>@reservation.CheckinDate.ToString("yyyy-MM-dd")</td>
+                <td>@reservation.CheckoutDate.ToString("yyyy-MM-dd")</td>
+                <td>@reservation.ConfirmationDeposit</td>
+                <td>@reservation.Rate</td>
+                <td>@reservation.Details</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@reservation.ReservationID" method="post"
+                          onsubmit="return confirm('Sei sicuro di voler eliminare questa prenotazione?');">
+                        <button type="submit" class="btn btn-danger">Elimina</button>
+                    </form>
+                    <form asp-action="Checkout" asp-route-id="@reservation.ReservationID" method="post">
+                        <button type="submit" class="btn btn-warning">Dettagli</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Crea Nuova Prenotazione</a>
+
+
+

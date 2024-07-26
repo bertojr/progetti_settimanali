@@ -47,7 +47,7 @@ namespace _07232024_s6_progetto.DAO
             var p = new[]
             {
                 new SqlParameter("@reservationId", newServiceReservatio.ReservationID),
-                new SqlParameter("@additionalService", newServiceReservatio.AdditionalService),
+                new SqlParameter("@additionalService", newServiceReservatio.AdditionalServiceID),
                 new SqlParameter("@date", newServiceReservatio.Date),
                 new SqlParameter("@quantity", newServiceReservatio.Quantity),
                 new SqlParameter("@totalPrice", newServiceReservatio.TotalPrice),
@@ -90,7 +90,7 @@ namespace _07232024_s6_progetto.DAO
                     Description = reader.GetString(17),
                     Price = reader.GetDecimal(18)
                 }
-            });
+            }, p);
 
             return results.FirstOrDefault();
         }
@@ -104,6 +104,7 @@ namespace _07232024_s6_progetto.DAO
                 new SqlParameter("@date", serviceReservation.Date),
                 new SqlParameter("@quantity", serviceReservation.Quantity),
                 new SqlParameter("@totalPrice", serviceReservation.TotalPrice),
+                new SqlParameter("@id", serviceReservation.ServiceReservationID),
             };
             _databaseHelper.ExecuteNonQuery(UPDATE_SERVICE_RESERVATION, p);
             return serviceReservation;

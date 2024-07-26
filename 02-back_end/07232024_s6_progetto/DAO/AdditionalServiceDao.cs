@@ -38,7 +38,7 @@ namespace _07232024_s6_progetto.DAO
             var p = new[]
             {
                 new SqlParameter("@description", newService.Description),
-                new SqlParameter("@firstName", newService.Price),
+                new SqlParameter("@price", newService.Price),
             };
             _databaseHelper.ExecuteNonQuery(INSERT_ADDITIONAL_SERVICE, p);
             return newService;
@@ -56,7 +56,7 @@ namespace _07232024_s6_progetto.DAO
                 AdditionalServiceID = reader.GetInt32(0),
                 Description = reader.GetString(1),
                 Price = reader.GetDecimal(2),
-            });
+            }, p);
 
             return results.FirstOrDefault();
         }
