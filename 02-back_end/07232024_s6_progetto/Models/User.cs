@@ -1,5 +1,4 @@
-﻿#pragma warning disable CS8618 // Disabilita l'avviso relativo ai campi non nullabili
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace _07232024_s6_progetto.Models
 {
