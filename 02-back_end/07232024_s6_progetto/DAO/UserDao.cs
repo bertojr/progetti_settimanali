@@ -41,7 +41,7 @@ namespace _07232024_s6_progetto.DAO
                 new SqlParameter("@firstName", newUser.FirstName),
                 new SqlParameter("@lastName", newUser.LastName),
                 new SqlParameter("@username", newUser.Username),
-                new SqlParameter("@email", newUser.Email),
+                new SqlParameter("@email", (object)newUser.Email ?? DBNull.Value),
                 new SqlParameter("@passwordHash", newUser.PasswordHash),
                 new SqlParameter("@passwordSalt", newUser.PasswordSalt),
             };
@@ -65,7 +65,7 @@ namespace _07232024_s6_progetto.DAO
                 Email = reader.GetString(4),
                 PasswordHash = reader.GetString(5),
                 PasswordSalt = reader.GetString(6)
-            });
+            }, p);
 
             return results.FirstOrDefault();
         }
@@ -102,7 +102,7 @@ namespace _07232024_s6_progetto.DAO
                 FirstName = reader.GetString(1),
                 LastName = reader.GetString(2),
                 Username = reader.GetString(3),
-                Email = reader.GetString(4),
+                Email = reader.IsDBNull(4) ? "" : reader.GetString(4),
                 PasswordHash = reader.GetString(5),
                 PasswordSalt = reader.GetString(6)
             });

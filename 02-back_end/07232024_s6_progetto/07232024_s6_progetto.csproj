@@ -7,6 +7,13 @@
     <RootNamespace>_07232024_s6_progetto</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>11.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>11.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="sql\" />
     <None Remove="Services\" />
@@ -17,6 +24,7 @@
     <None Remove="Views\Guests\" />
     <None Remove="Views\Users\" />
     <None Remove="Views\AdditionalServices\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="sql\" />
@@ -28,6 +36,7 @@
     <Folder Include="Views\Guests\" />
     <Folder Include="Views\Users\" />
     <Folder Include="Views\AdditionalServices\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />

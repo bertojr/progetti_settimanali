@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using _07232024_s6_progetto.Models;
 using _07232024_s6_progetto.DAO;
+using System.Security.Claims;
 
 namespace _07232024_s6_progetto.Controllers;
 
@@ -18,26 +19,20 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View(new Guest());
+        var user = HttpContext.User;
+        ViewBag.Username = user.Identity.Name;
+        ViewBag.Email = user.FindFirst(ClaimTypes.Email)?.Value;
+        if (!user.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+        else
+        {
+            
+            return View();
+        }
     }
 
-    [HttpPost]
-    public IActionResult Create(Guest newGuest)
-    {
-        _guestDao.Create(newGuest);
-        return RedirectToAction("Privacy");
-    }
-
-    public IActionResult Privacy()
-    {
-        return View(_guestDao.GetAll());
-    }
-
-    public IActionResult Delete(int id)
-    {
-        _guestDao.Delete(id);
-        return RedirectToAction("Privacy");
-    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

@@ -1,7 +1,5 @@
-﻿@model Guest
-
-@{
-    ViewData["Title"] = "Create Guest";
+﻿@{
+    ViewData["Title"] = "Home";
 }
 
 <a asp-controller="Reservations" asp-action="Index">Gestione prenotazioni</a>
@@ -9,6 +7,20 @@
 <a asp-controller="Guests" asp-action="Index">Gestione clienti</a>
 <a asp-controller="Users" asp-action="Index">Gestione Utenti</a>
 <a asp-controller="AdditionalServices" asp-action="Index">Gestione servizi aggiuntivi</a>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Ciao @ViewBag.Username</p>
+
+    <form asp-controller="Account" asp-action="Logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Register">REGISTRATI</a>
+}
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

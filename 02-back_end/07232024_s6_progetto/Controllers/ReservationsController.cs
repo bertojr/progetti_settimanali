@@ -2,6 +2,7 @@
 using _07232024_s6_progetto.Models;
 using _07232024_s6_progetto.DAO;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _07232024_s6_progetto.Controllers
 {
@@ -26,11 +27,13 @@ namespace _07232024_s6_progetto.Controllers
             _additionalServiceDao = additionalServiceDao;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View(_reservationDao.GetAll());
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             ViewBag.Guests = new SelectList(_guestDao.GetAll(), "CF", "CF");
@@ -74,6 +77,7 @@ namespace _07232024_s6_progetto.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public IActionResult AddService(int id)
         {
             var additionalServices = _additionalServiceDao.GetAll();

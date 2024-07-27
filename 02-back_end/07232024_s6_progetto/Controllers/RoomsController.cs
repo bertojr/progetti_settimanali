@@ -2,6 +2,7 @@
 using _07232024_s6_progetto.Models;
 using _07232024_s6_progetto.DAO;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _07232024_s6_progetto.Controllers
 {
@@ -16,11 +17,13 @@ namespace _07232024_s6_progetto.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View(_roomDao.GetAll());
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             return View(new Room());

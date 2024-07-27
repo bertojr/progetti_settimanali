@@ -1,6 +1,7 @@
 ﻿using _07232024_s6_progetto.DAO;
 using _07232024_s6_progetto.Interfaces;
 using _07232024_s6_progetto.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +22,15 @@ builder.Services
     .AddTransient<ServiceReservationDao>()
     .AddTransient<RoleUserDao>()
     .AddTransient<RoleDao>()
-    .AddTransient<AdditionalServiceDao>();
+    .AddTransient<AdditionalServiceDao>()
+    .AddScoped<IUserService, UserService>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login"; // Reindirizza qui se l'utente non è autenticato
+    });
+builder.Services.AddAuthorization();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -41,6 +50,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

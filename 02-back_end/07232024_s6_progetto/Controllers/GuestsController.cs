@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using _07232024_s6_progetto.Models;
 using _07232024_s6_progetto.DAO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _07232024_s6_progetto.Controllers
 {
@@ -13,11 +14,13 @@ namespace _07232024_s6_progetto.Controllers
             _guestDao = guestDao;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View(_guestDao.GetAll());
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             return View(new Guest());

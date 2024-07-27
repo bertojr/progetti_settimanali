@@ -1,5 +1,6 @@
 ﻿using _07232024_s6_progetto.DAO;
 using _07232024_s6_progetto.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,11 +16,13 @@ namespace _07232024_s6_progetto.Controllers
             _additionalServiceDao = additionalServiceDao;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View(_additionalServiceDao.GetAll());
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             return View(new AdditionalService());

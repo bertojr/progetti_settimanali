@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/AdditionalServices/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRkaXRpb25hbFNlcnZpY2VzL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,10 +42,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/dany/Documents/git/progetti_settimanali/02-back_end/07232024_s6_progetto/Views/Reservations/AddService.cshtml]
