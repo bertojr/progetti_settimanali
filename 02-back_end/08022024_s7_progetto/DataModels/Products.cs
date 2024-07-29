@@ -15,8 +15,7 @@ namespace _08022024_s7_progetto.DataModels
 		public required string Name { get; set; }
 
 		[Required]
-		[StringLength(128)]
-        public required string Photo { get; set; }
+        public required byte[] Photo { get; set; }
 
 		[Range(0, 100)]
 		public decimal Price { get; set; } = 0;

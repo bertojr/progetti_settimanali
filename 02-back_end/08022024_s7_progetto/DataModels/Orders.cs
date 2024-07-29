@@ -4,6 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _08022024_s7_progetto.DataModels
 {
+    public enum OrderStatus
+    {
+        InCorso,
+        Evaso,
+    }
+
 	public class Orders
 	{
         [Key]
@@ -22,8 +28,9 @@ namespace _08022024_s7_progetto.DataModels
         public string? Notes { get; set; }
 
         [Required]
-        [StringLength(20)]
-        public required string Status { get; set; } = "In corso";
+        public required OrderStatus Status { get; set; } = OrderStatus.InCorso;
+
+        public List<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
     }
 }
 

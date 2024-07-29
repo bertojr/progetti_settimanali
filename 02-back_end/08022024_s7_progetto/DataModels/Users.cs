@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace _08022024_s7_progetto.DataModels
 {
@@ -32,6 +31,8 @@ namespace _08022024_s7_progetto.DataModels
         public required string PasswordSalt { get; set; }
 
         public List<Roles> Roles { get; set; } = new List<Roles>();
+
+        public List<Orders> Order { get; set; } = new List<Orders>();
     }
 }
 
