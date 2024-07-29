@@ -33,6 +33,23 @@ namespace _07232024_s6_progetto.Controllers
             return View(_reservationDao.GetAll());
         }
 
+        public IActionResult Search(string cf)
+        {
+            if (string.IsNullOrEmpty(cf))
+            {
+                return RedirectToAction("Index");
+            }
+            var reservations = _reservationDao.GetByCf(cf);
+            return View("Index", reservations);
+        }
+
+        public IActionResult SearchPC()
+        {
+            var reservations = _reservationDao.GetAllPensioneCompleta();
+            return View("Index", reservations);
+        } 
+
+
         [Authorize]
         public IActionResult Create()
         {

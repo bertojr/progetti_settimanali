@@ -46,6 +46,8 @@ namespace _07232024_s6_progetto.Models
         [StringLength(50, ErrorMessage = "I dettagli non possono superare i " +
             "50 caratteri.")]
         public string Details { get; set; }
+
+        public int TotalReservations { get; set; }
     }
 }
 

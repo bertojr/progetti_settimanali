@@ -6,7 +6,7 @@ using _07232024_s6_progetto.Interfaces;
 
 namespace _07232024_s6_progetto.DAO
 {
-	public class ReservationDao : IDao<Reservation>
+	public class ReservationDao : IDao<Reservation>, IReservationDao
 	{
         private readonly DatabaseHelper _databaseHelper;
 
@@ -39,6 +39,32 @@ namespace _07232024_s6_progetto.DAO
         private const string DELETE_RESERVATION =
             "DELETE FROM Reservations " +
             "WHERE ReservationID = @id";
+        private const string GET_RESERVATION_BY_CF =
+            "SELECT * " +
+            "FROM Reservations as r " +
+                "JOIN Guests as g " +
+                    "ON r.CF = g.CF " +
+                "JOIN Rooms as ro " +
+                    "ON ro.RoomID = r.RoomID " +
+            "WHERE r.CF LIKE @cf";
+        private const string GET_ALL_PENSIONE_COMPLETA =
+            "SELECT r.ReservationID, r.CF, r.RoomID, r.ReservationDate, " +
+            "r.Year, r.CheckInDate, r.CheckOutDate, r.ConfirmationDeposit, " +
+            "r.Rate, r.Details, g.GuestID, g.CF, g.FirstName, g.LastName, " +
+            "g.CityOfResidence, g.ProvinceOfResidence, g.Email, g.MobilePhone, " +
+            "g.Phone, ro.RoomID, ro.[Description], ro.Typology, " +
+            "COUNT(r.ReservationID) as Totale_prenotazioni " +
+            "FROM Reservations as r " +
+                "JOIN Guests as g " +
+                    "ON r.CF = g.CF " +
+                "JOIN Rooms as ro " +
+                    "ON ro.RoomID = r.RoomID " +
+            "WHERE r.Details LIKE 'pensione completa' " +
+            "GROUP BY r.ReservationID, r.CF, r.RoomID, r.ReservationDate, " +
+            "r.Year, r.CheckInDate, r.CheckOutDate, r.ConfirmationDeposit, " +
+            "r.Rate, r.Details, g.GuestID, g.CF, g.FirstName, g.LastName, " +
+            "g.CityOfResidence, g.ProvinceOfResidence, g.Email, g.MobilePhone, " +
+            "g.Phone, ro.RoomID, ro.[Description], ro.Typology";
 
         public ReservationDao(DatabaseHelper databaseHelper)
         {
@@ -167,6 +193,82 @@ namespace _07232024_s6_progetto.DAO
                     Description = reader.IsDBNull(20) ? "" : reader.GetString(20),
                     Typology = reader.GetString(21),
                 }
+            });
+        }
+
+        public List<Reservation> GetByCf(string cf)
+        {
+            var p = new[]
+            {
+                new SqlParameter("@cf", cf)
+            };
+
+            return _databaseHelper.ExecuteQuery(GET_RESERVATION_BY_CF, reader => new Reservation
+            {
+                ReservationID = reader.GetInt32(0),
+                CF = reader.GetString(1),
+                RoomID = reader.GetInt32(2),
+                ReservationDate = reader.GetDateTime(3),
+                Year = reader.GetInt32(4),
+                CheckinDate = DateOnly.FromDateTime(reader.GetDateTime(5)),
+                CheckoutDate = DateOnly.FromDateTime(reader.GetDateTime(6)),
+                ConfirmationDeposit = reader.GetDecimal(7),
+                Rate = reader.GetDecimal(8),
+                Details = reader.GetString(9),
+                Guest = new Guest
+                {
+                    GuestID = reader.GetInt32(10),
+                    CF = reader.GetString(11),
+                    FirstName = reader.GetString(12),
+                    LastName = reader.GetString(13),
+                    CityOfResidence = reader.IsDBNull(14) ? "" : reader.GetString(14),
+                    ProvinceOfResidence = reader.IsDBNull(15) ? "" : reader.GetString(15),
+                    Email = reader.IsDBNull(16) ? "" : reader.GetString(16),
+                    Phone = reader.IsDBNull(17) ? "" : reader.GetString(17),
+                    MobilePhone = reader.IsDBNull(18) ? "" : reader.GetString(18),
+                },
+                Room = new Room
+                {
+                    RoomID = reader.GetInt32(19),
+                    Description = reader.IsDBNull(20) ? "" : reader.GetString(20),
+                    Typology = reader.GetString(21),
+                }
+            }, p);
+        }
+
+        public List<Reservation> GetAllPensioneCompleta()
+        {
+            return _databaseHelper.ExecuteQuery(GET_ALL_PENSIONE_COMPLETA, reader => new Reservation
+            {
+                ReservationID = reader.GetInt32(0),
+                CF = reader.GetString(1),
+                RoomID = reader.GetInt32(2),
+                ReservationDate = reader.GetDateTime(3),
+                Year = reader.GetInt32(4),
+                CheckinDate = DateOnly.FromDateTime(reader.GetDateTime(5)),
+                CheckoutDate = DateOnly.FromDateTime(reader.GetDateTime(6)),
+                ConfirmationDeposit = reader.GetDecimal(7),
+                Rate = reader.GetDecimal(8),
+                Details = reader.GetString(9),
+                Guest = new Guest
+                {
+                    GuestID = reader.GetInt32(10),
+                    CF = reader.GetString(11),
+                    FirstName = reader.GetString(12),
+                    LastName = reader.GetString(13),
+                    CityOfResidence = reader.IsDBNull(14) ? "" : reader.GetString(14),
+                    ProvinceOfResidence = reader.IsDBNull(15) ? "" : reader.GetString(15),
+                    Email = reader.IsDBNull(16) ? "" : reader.GetString(16),
+                    Phone = reader.IsDBNull(17) ? "" : reader.GetString(17),
+                    MobilePhone = reader.IsDBNull(18) ? "" : reader.GetString(18),
+                },
+                Room = new Room
+                {
+                    RoomID = reader.GetInt32(19),
+                    Description = reader.IsDBNull(20) ? "" : reader.GetString(20),
+                    Typology = reader.GetString(21),
+                },
+                TotalReservations = reader.GetInt32(22)
             });
         }
     }

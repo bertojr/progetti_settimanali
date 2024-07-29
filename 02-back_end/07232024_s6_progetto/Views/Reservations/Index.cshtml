@@ -6,6 +6,18 @@
 
 <h1>Prenotazioni</h1>
 
+<form asp-action="Search" method="get">
+    <div class="form-group">
+        <label for="cf">Codice Fiscale</label>
+        <input type="text" id="cf" name="cf" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-warning">Cerca</button>
+</form>
+
+<form asp-action="SearchPC" method="get">
+    <button type="submit" class="btn btn-warning">All Pensione completa</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -51,6 +63,7 @@
         }
     </tbody>
 </table>
+
 
 <a asp-action="Create" class="btn btn-primary">Crea Nuova Prenotazione</a>
 
