@@ -1,7 +1,15 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using _08022024_s7_progetto.DataModels;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var conn = builder.Configuration.GetConnectionString("PizzeriaInFornoDB");
+builder.Services.AddDbContext<ApplicationDbContext>(
+    opt => opt.UseSqlServer(conn)
+    );
 
 var app = builder.Build();
 
