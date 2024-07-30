@@ -6,7 +6,7 @@ namespace _08022024_s7_progetto.DataModels
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public required int UserID { get; set; }
+        public int UserID { get; set; }
 
         [Required]
         [StringLength(50)]
