@@ -1,4 +1,6 @@
 ﻿using _08022024_s7_progetto.DataModels;
+using _08022024_s7_progetto.Interfaces;
+using _08022024_s7_progetto.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +14,10 @@ var conn = builder.Configuration.GetConnectionString("PizzeriaInFornoDB");
 builder.Services.AddDbContext<ApplicationDbContext>(
     opt => opt.UseSqlServer(conn)
     );
+
+// configurazione servizi
+builder.Services
+    .AddScoped<IAuthService, AuthService>();
 
 // Autenticazione e autorizzazione
 builder.Services

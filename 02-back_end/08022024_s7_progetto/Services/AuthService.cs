@@ -6,13 +6,13 @@ using _08022024_s7_progetto.Interfaces;
 using _08022024_s7_progetto.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace _08022024_s7_progetto.Services
+namespace _08022024_s7_progetto.Service
 {
-	public class AuthServices : IAuthService
+	public class AuthService : IAuthService
 	{
         private readonly ApplicationDbContext _dbContext;
 
-		public AuthServices(ApplicationDbContext dbContext)
+		public AuthService(ApplicationDbContext dbContext)
 		{
             _dbContext = dbContext;
 		}
@@ -37,9 +37,9 @@ namespace _08022024_s7_progetto.Services
             var newUser = new User
             {
                 FirstName = userDto.FirstName,
-                LastName = userDto.FirstName,
-                Username = userDto.FirstName,
-                Email = userDto.FirstName,
+                LastName = userDto.LastName,
+                Username = userDto.Username,
+                Email = userDto.Email,
                 PasswordHash = hash,
                 PasswordSalt = salt
             };
