@@ -1,6 +1,6 @@
 ﻿using _08022024_s7_progetto.DataModels;
 using _08022024_s7_progetto.Interfaces;
-using _08022024_s7_progetto.Service;
+using _08022024_s7_progetto.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +17,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 
 // configurazione servizi
 builder.Services
-    .AddScoped<IAuthService, AuthService>();
+    .AddScoped<IAuthService, AuthService>()
+    .AddScoped<IProductService, ProductService>();
 
 // Autenticazione e autorizzazione
 builder.Services

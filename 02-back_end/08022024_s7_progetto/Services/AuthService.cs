@@ -7,7 +7,7 @@ using _08022024_s7_progetto.Interfaces;
 using _08022024_s7_progetto.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace _08022024_s7_progetto.Service
+namespace _08022024_s7_progetto.Services
 {
 	public class AuthService : IAuthService
 	{

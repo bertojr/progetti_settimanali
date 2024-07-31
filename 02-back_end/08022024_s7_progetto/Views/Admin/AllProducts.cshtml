@@ -1,0 +1,45 @@
+﻿@model IEnumerable<_08022024_s7_progetto.DataModels.Product>
+
+@{
+    ViewData["Title"] = "Lista prodotti";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lista prodotti</h1>
+    <a asp-action="CreateProduct" class="btn btn-primary">Aggiungi nuovo prodotto</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Delivery Time (Minutes)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.DeliveryTimeInMinutes</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@product.ProductID" class="btn btn-warning btn-sm">Modifica</a>
+                        <a asp-action="Details" asp-route-id="@product.ProductID" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="DeleteProduct" asp-route-id="@product.ProductID" class="btn btn-danger btn-sm">Elimina</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>Nessun prodotto presente</p>
+        }
+
+    </tbody>
+</table>
+

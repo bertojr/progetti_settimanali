@@ -7,14 +7,13 @@ namespace _08022024_s7_progetto.DataModels
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public required int ProductID { get; set; }
+        public int ProductID { get; set; }
 
         [Required]
         [StringLength(50)]
         public required string Name { get; set; }
 
-        [Required]
-        public required byte[] Photo { get; set; }
+        public byte[]? Photo { get; set; }
 
         [Range(0, 100)]
         public decimal Price { get; set; } = 0;
