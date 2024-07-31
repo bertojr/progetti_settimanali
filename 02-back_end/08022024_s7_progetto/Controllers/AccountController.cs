@@ -31,6 +31,12 @@ namespace _08022024_s7_progetto.Controllers
             return View();
         }
 
+        // Azione per visualizzare la pagina di accesso negato
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
         // gestiste la registrazione degli utenti
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -65,8 +71,8 @@ namespace _08022024_s7_progetto.Controllers
                     // crea una lista di claims per l'utente
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, user.FirstName),
-                        new Claim(ClaimTypes.Surname, user.LastName),
+                        new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
+                        new Claim(ClaimTypes.Name, user.Username),
                     };
 
                     // aggiunge i ruoli dell'utente ai claims
@@ -114,7 +120,7 @@ namespace _08022024_s7_progetto.Controllers
             // Firma l'utente fuori e rimuove il cookie di autenticazione
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             // reindirizza alla pagina di login
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

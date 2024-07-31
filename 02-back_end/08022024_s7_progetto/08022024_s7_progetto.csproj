@@ -14,12 +14,20 @@
     <None Remove="Interfaces\" />
     <None Remove="Services\" />
     <None Remove="Views\Account\" />
+    <None Remove="Views\Product\" />
+    <None Remove="Views\Cart\" />
+    <None Remove="Views\Order\" />
+    <None Remove="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataModels\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />

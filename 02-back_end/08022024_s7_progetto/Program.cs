@@ -30,6 +30,7 @@ builder.Services
     .AddCookie(opt =>
     {
         opt.LoginPath = "/Account/Login";
+        opt.AccessDeniedPath = "/Account/AccessDenied";
         opt.ExpireTimeSpan = TimeSpan.FromMinutes(30); // imposta il tempo di scadenza del cookie
         opt.SlidingExpiration = true; // Rinnova il cookie se manca meno della metà del tempo di scadenza
     });

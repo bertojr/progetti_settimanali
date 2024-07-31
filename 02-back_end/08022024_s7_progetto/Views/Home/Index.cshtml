@@ -1,4 +1,5 @@
-﻿@{
+﻿@model _08022024_s7_progetto.DataModels.User
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -8,4 +9,25 @@
 </div>
 
 <a asp-controller="Account" asp-action="Logout">Logout</a>
+
+<a asp-controller="Product" asp-action="Index">Prodotti</a>
+<a asp-controller="Cart" asp-action="Index">Carrello</a>
+<a asp-controller="Order" asp-action="Index">Ordini</a>
+<a asp-controller="Admin" asp-action="Index">Amministrazione</a>
+
+@if (Model != null)
+{
+    <p>@Model.UserID</p>
+    <p>@Model.FirstName</p>
+
+    <p>@Model.LastName</p>
+
+    <p>@Model.Username</p>
+}
+else
+{
+    <p>Utente non loggato</p>
+}
+
+
 
