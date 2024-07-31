@@ -65,8 +65,17 @@ namespace _08022024_s7_progetto.Controllers
 
                     var claimsIdentity = new ClaimsIdentity(claims,
                         CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    var authProperty = new AuthenticationProperties
+                    {
+                        // se true, il cookie persisterà oltre la chiusura del browser
+                        IsPersistent = true,
+                        // Tempo di scadenza del cookie
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+                    };
+
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults
-                        .AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                        .AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperty);
 
                     return RedirectToAction("Index", "Home");
                 }

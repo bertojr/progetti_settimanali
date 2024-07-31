@@ -28,7 +28,12 @@ builder.Services
         opt.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     })
     .AddCookie(opt =>
-        opt.LoginPath = "/Account/Login");
+    {
+        opt.LoginPath = "/Account/Login";
+        opt.ExpireTimeSpan = TimeSpan.FromMinutes(30); // imposta il tempo di scadenza del cookie
+        opt.SlidingExpiration = true; // Rinnova il cookie se manca meno della metà del tempo di scadenza
+    });
+        
 
 
 var app = builder.Build();
