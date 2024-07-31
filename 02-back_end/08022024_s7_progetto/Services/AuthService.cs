@@ -5,31 +5,24 @@ using System.Text;
 using _08022024_s7_progetto.DataModels;
 using _08022024_s7_progetto.Interfaces;
 using _08022024_s7_progetto.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace _08022024_s7_progetto.Services
 {
 	public class AuthService : IAuthService
 	{
-        // dichiarazione del contesto del database
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IUserService _userService;
 
         // costrutto che inizializza il contesto del database
-		public AuthService(ApplicationDbContext dbContext)
+        public AuthService(IUserService userService)
 		{
-            _dbContext = dbContext;
+            _userService = userService;
 		}
 
         // metodo per effettuare il login di un utente
-        public User Login(string username, string password)
+        public async Task<User> Login(string username, string password)
         {
-            // Cerca l'utente nel database includedo anche i suoi ruoli, senza
-            // tracciamento delle modifiche
-            var user = _dbContext.Users
-                .AsNoTracking() // migliora le prestazioni per le olperazioni
-                                // di sola lettura
-                .Include(u => u.Roles)
-                .FirstOrDefault(u => u.Username == username);
+            var user = await _userService.GetByUsername(username);
+
             // se l'utente esiste e la password è verificata ritorna l'utente
             if(user != null && VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
             {
@@ -57,9 +50,7 @@ namespace _08022024_s7_progetto.Services
                 PasswordSalt = salt
             };
 
-            // aggiunge il nuovo utente al contesto del database e salva le modifiche
-            _dbContext.Add(newUser);
-            _dbContext.SaveChanges();
+            _userService.Create(newUser);
 
             return newUser;
         }

@@ -9,10 +9,15 @@ namespace _08022024_s7_progetto.Controllers
     public class AdminController : Controller
     {
         private readonly IProductService _productService;
+        private readonly IIngredientService _ingredientService;
+        private readonly IUserService _userService;
 
-        public AdminController(IProductService productService)
+        public AdminController(IProductService productService,
+            IIngredientService ingredientService, IUserService userService)
         {
             _productService = productService;
+            _ingredientService = ingredientService;
+            _userService = userService;
         }
 
 
@@ -27,6 +32,18 @@ namespace _08022024_s7_progetto.Controllers
             return View(products);
         }
 
+        public async Task<IActionResult> AllIngredients()
+        {
+            var ingredients = await _ingredientService.GetAll();
+            return View(ingredients);
+        }
+
+        public async Task<IActionResult> AllUsers()
+        {
+            var users = await _userService.GetAll();
+            return View(users);
+        }
+
         public IActionResult CreateProduct()
         {
             return View(new Product
@@ -36,16 +53,45 @@ namespace _08022024_s7_progetto.Controllers
             });
         }
 
+        public IActionResult CreateIngredient()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> DeleteProduct(int id)
         {
             await _productService.Delete(id);
             return RedirectToAction("AllProducts");
         }
 
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            await _userService.Delete(id);
+            return RedirectToAction("AllUsers");
+        }
+
+        public async Task<IActionResult> DeleteIngredient(int id)
+        {
+            await _ingredientService.Delete(id);
+            return RedirectToAction("AllIngredients");
+        }
+
         public async Task<IActionResult> EditProduct(int id)
         {
             var product = await _productService.GetById(id);
             return View(product);
+        }
+
+        public async Task<IActionResult> EditIngredient(int id)
+        {
+            var ingredient = await _ingredientService.GetById(id);
+            return View(ingredient);
+        }
+
+        public async Task<IActionResult> EditUser(int id)
+        {
+            var user = await _userService.GetById(id);
+            return View(user);
         }
 
         [HttpPost]
@@ -64,6 +110,20 @@ namespace _08022024_s7_progetto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateIngredient(Ingredient newIngredient)
+        {
+            if (ModelState.IsValid)
+            {
+                await _ingredientService.Create(newIngredient);
+
+                return RedirectToAction("AllIngredients");
+            }
+
+            return View(newIngredient);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditProduct(Product updateProduct)
         {
             if (ModelState.IsValid)
@@ -75,6 +135,31 @@ namespace _08022024_s7_progetto.Controllers
             return View(updateProduct);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditIngredient(Ingredient updateIngredient)
+        {
+            if (ModelState.IsValid)
+            {
+                await _ingredientService.Update(updateIngredient.IngredientID, updateIngredient);
+                return RedirectToAction("AllIngredients");
+            }
+
+            return View(updateIngredient);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditUser(User updateUser)
+        {
+            if (ModelState.IsValid)
+            {
+                await _userService.Update(updateUser.UserID, updateUser);
+                return RedirectToAction("AllUsers");
+            }
+
+            return View(updateUser);
+        }
     }
 }
 

@@ -73,7 +73,7 @@ namespace _08022024_s7_progetto.Services
                 product.Price = updateProduct.Price;
                 product.Ingredients = updateProduct.Ingredients;
 
-                _dbContext.Update(product);
+                _dbContext.Products.Update(product);
                 await _dbContext.SaveChangesAsync();
 
                 return product;

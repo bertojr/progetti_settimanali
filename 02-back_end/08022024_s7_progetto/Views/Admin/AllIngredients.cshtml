@@ -1,0 +1,45 @@
+﻿@model IEnumerable<_08022024_s7_progetto.DataModels.Ingredient>
+
+@{
+    ViewData["Title"] = "Lista ingredienti";
+}
+
+<h2>Lista ingredienti</h2>
+
+<p>
+    <a asp-action="CreateIngredient" class="btn btn-primary">Crea Nuovo Ingrediente</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var ingredient in Model)
+            {
+                <tr>
+                    <td>@ingredient.Name</td>
+                    <td>@ingredient.Description</td>
+                    <td>
+                        <a asp-action="EditIngredient" asp-route-id="@ingredient.IngredientID" class="btn btn-warning btn-sm">Modifica</a>
+                        <a asp-action="DeleteIngredient" asp-route-id="@ingredient.IngredientID" class="btn btn-danger btn-sm">Elimina</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">Nessun ingrediente presente</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

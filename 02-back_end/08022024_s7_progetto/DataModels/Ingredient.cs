@@ -8,7 +8,7 @@ namespace _08022024_s7_progetto.DataModels
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public required int IngredientID { get; set; }
+        public int IngredientID { get; set; }
 
         [Required]
         [StringLength(50)]

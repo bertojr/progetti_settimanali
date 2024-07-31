@@ -7,7 +7,7 @@ namespace _08022024_s7_progetto.Interfaces
 	public interface IAuthService
 	{
 		public User Register(UserDto userDto);
-		public User Login(string username, string password);
+		public Task<User> Login(string username, string password);
 	}
 }
 
