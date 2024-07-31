@@ -39,7 +39,13 @@ namespace _08022024_s7_progetto.Controllers
         public async Task<IActionResult> DeleteProduct(int id)
         {
             await _productService.Delete(id);
-            return View("AllProducts");
+            return RedirectToAction("AllProducts");
+        }
+
+        public async Task<IActionResult> EditProduct(int id)
+        {
+            var product = await _productService.GetById(id);
+            return View(product);
         }
 
         [HttpPost]
@@ -54,6 +60,19 @@ namespace _08022024_s7_progetto.Controllers
             }
 
             return View(newProduct);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProduct(Product updateProduct)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productService.Update(updateProduct.ProductID, updateProduct);
+                return RedirectToAction("AllProducts");
+            }
+
+            return View(updateProduct);
         }
 
     }

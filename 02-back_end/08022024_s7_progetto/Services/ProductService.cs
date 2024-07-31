@@ -80,7 +80,7 @@ namespace _08022024_s7_progetto.Services
             }
             catch (KeyNotFoundException ex)
             {
-                _logger.LogWarning($"Prodotto con ID {id} non trovato");
+                _logger.LogWarning(ex, $"Prodotto con ID {id} non trovato");
                 throw;
             }
             catch (Exception ex)
