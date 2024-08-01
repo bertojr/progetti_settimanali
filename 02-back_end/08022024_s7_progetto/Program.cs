@@ -18,7 +18,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 // configurazione servizi
 builder.Services
     .AddScoped<IAuthService, AuthService>()
-    .AddScoped<IProductService, ProductService>();
+    .AddScoped<IProductService, ProductService>()
+    .AddScoped<IIngredientService, IngredientService>()
+    .AddScoped<IUserService, UserService>()
+    .AddScoped<IRoleService, RoleService>()
+    .AddScoped<IOrderService, OrderService>();
 
 // Autenticazione e autorizzazione
 builder.Services

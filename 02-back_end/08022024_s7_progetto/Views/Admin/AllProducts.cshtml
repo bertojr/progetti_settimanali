@@ -15,6 +15,7 @@
             <th>Nome</th>
             <th>Prezzo</th>
             <th>Tempo di consegna</th>
+            <th>Ingredienti</th>
             <th>Azioni</th>
         </tr>
     </thead>
@@ -27,6 +28,21 @@
                     <td>@product.Name</td>
                     <td>@product.Price <strong>€</strong></td>
                     <td>@product.DeliveryTimeInMinutes <strong>min</strong></td>
+                    <td>
+                        @if (product.Ingredients != null && product.Ingredients.Any())
+                        {
+                            <ul>
+                                @foreach (var ingredient in product.Ingredients)
+                                {
+                                    <li>@ingredient.Name</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>Nessun ingrediente associato</p>
+                        }
+                    </td>
                     <td>
                         <a asp-action="EditProduct" asp-route-id="@product.ProductID" class="btn btn-warning btn-sm">Modifica</a>
                         <a asp-action="DeleteProduct" asp-route-id="@product.ProductID" class="btn btn-danger btn-sm">Elimina</a>

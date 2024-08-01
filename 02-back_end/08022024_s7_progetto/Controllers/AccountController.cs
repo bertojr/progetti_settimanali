@@ -65,7 +65,7 @@ namespace _08022024_s7_progetto.Controllers
             if (ModelState.IsValid)
             {
                 // autentica l'utente
-                var user = _authService.Login(model.Username, model.Password);
+                var user = await _authService.Login(model.Username, model.Password);
                 if (user != null)
                 {
                     // crea una lista di claims per l'utente

@@ -2,6 +2,7 @@
 using _08022024_s7_progetto.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace _08022024_s7_progetto.Controllers
 {
@@ -44,12 +45,14 @@ namespace _08022024_s7_progetto.Controllers
             return View(users);
         }
 
-        public IActionResult CreateProduct()
+        public async Task<IActionResult> CreateProduct()
         {
+            var ingredients = await _ingredientService.GetAll();
+            ViewBag.Ingredients = new SelectList(ingredients, "IngredientID", "Name");
             return View(new Product
             {
                 Name = "",
-                DeliveryTimeInMinutes = 1
+                DeliveryTimeInMinutes = 1,
             });
         }
 
@@ -96,11 +99,11 @@ namespace _08022024_s7_progetto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateProduct(Product newProduct)
+        public async Task<IActionResult> CreateProduct(Product newProduct, int[] selectedIngredients)
         {
             if (ModelState.IsValid)
             {
-                await _productService.Create(newProduct);
+                await _productService.Create(newProduct, selectedIngredients);
 
                 return RedirectToAction("AllProducts");
             }

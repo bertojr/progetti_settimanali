@@ -16,7 +16,7 @@ namespace _08022024_s7_progetto.Services
             _logger = logger;
         }
 
-        public async Task<Product> Create(Product newProduct)
+        public async Task<Product> Create(Product newProduct, IEnumerable<int> selectedIngredients)
         {
             if (newProduct == null)
             {
@@ -25,6 +25,11 @@ namespace _08022024_s7_progetto.Services
 
             try
             {
+                var selectedIngredientList = await _dbContext.Ingredients
+                    .Where(i => selectedIngredients.Contains(i.IngredientID))
+                    .ToListAsync();
+                newProduct.Ingredients = selectedIngredientList;
+
                 await _dbContext.Products.AddAsync(newProduct);
                 await _dbContext.SaveChangesAsync();
                 return newProduct;
@@ -41,7 +46,7 @@ namespace _08022024_s7_progetto.Services
             try
             {
                 var product = await GetById(id);
-                _dbContext.Products.Remove(product);
+                _dbContext.Remove(product);
                 await _dbContext.SaveChangesAsync();
 
                 return product;
@@ -71,9 +76,9 @@ namespace _08022024_s7_progetto.Services
                 product.Name = updateProduct.Name;
                 product.Photo = updateProduct.Photo;
                 product.Price = updateProduct.Price;
-                product.Ingredients = updateProduct.Ingredients;
+                // product.Ingredients = updateProduct.Ingredients;
 
-                _dbContext.Products.Update(product);
+                _dbContext.Update(product);
                 await _dbContext.SaveChangesAsync();
 
                 return product;

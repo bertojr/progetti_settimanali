@@ -1,5 +1,4 @@
-﻿using System;
-using _08022024_s7_progetto.DataModels;
+﻿using _08022024_s7_progetto.DataModels;
 using _08022024_s7_progetto.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +7,9 @@ namespace _08022024_s7_progetto.Services
 	public class IngredientService : IIngredientService 
 	{
         private readonly ApplicationDbContext _dbContext;
-        private readonly ILogger<ProductService> _logger;
+        private readonly ILogger<IngredientService> _logger;
 
-        public IngredientService(ApplicationDbContext dbContext, ILogger<ProductService> logger)
+        public IngredientService(ApplicationDbContext dbContext, ILogger<IngredientService> logger)
         {
             _dbContext = dbContext;
             _logger = logger;
@@ -25,7 +24,7 @@ namespace _08022024_s7_progetto.Services
 
             try
             {
-                await _dbContext.Ingredients.AddAsync(newIngredient);
+                await _dbContext.AddAsync(newIngredient);
                 await _dbContext.SaveChangesAsync();
                 return newIngredient;
             }
@@ -41,7 +40,7 @@ namespace _08022024_s7_progetto.Services
             try
             {
                 var ingredient = await GetById(id);
-                _dbContext.Ingredients.Remove(ingredient);
+                _dbContext.Remove(ingredient);
                 await _dbContext.SaveChangesAsync();
 
                 return ingredient;
@@ -87,7 +86,7 @@ namespace _08022024_s7_progetto.Services
                 if (ingredient == null)
                 {
                     _logger.LogWarning($"Ingrediente con ID {id} non trovato");
-                    throw new KeyNotFoundException($"Ingrediente non ID {id} non trovato");
+                    throw new KeyNotFoundException($"Ingrediente con ID {id} non trovato");
                 }
 
                 return ingredient;
