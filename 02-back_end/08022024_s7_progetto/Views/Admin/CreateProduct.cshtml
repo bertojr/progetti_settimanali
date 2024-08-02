@@ -36,11 +36,6 @@
     <div class="form-group">
         <label>-- Seleziona ingredienti --</label>
         <select name="selectedIngredients" asp-items="ViewBag.Ingredients" multiple="multiple" class="form-control">
-            @foreach(var ingredient in (SelectList)ViewBag.Ingredients)
-            {
-                <option value="@ingredient.Value">@ingredient.Text</option>
-            }
-
         </select>
     </div>
 

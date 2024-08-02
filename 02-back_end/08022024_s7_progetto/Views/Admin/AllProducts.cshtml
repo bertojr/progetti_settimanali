@@ -34,7 +34,14 @@
                             <ul>
                                 @foreach (var ingredient in product.Ingredients)
                                 {
-                                    <li>@ingredient.Name</li>
+                                    <li>
+                                        @ingredient.Name
+                                        <form asp-action="RemoveIngredientFromProduct" method="post" style="display:inline;">
+                                            <input type="hidden" name="productId" value="@product.ProductID" />
+                                            <input type="hidden" name="ingredientId" value="@ingredient.IngredientID" />
+                                            <input type="submit" value="X" class="btn btn-danger btn-sm" />
+                                        </form>
+                                    </li>
                                 }
                             </ul>
                         }

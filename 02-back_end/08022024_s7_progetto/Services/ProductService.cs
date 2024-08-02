@@ -25,6 +25,7 @@ namespace _08022024_s7_progetto.Services
 
             try
             {
+                // associare gli ingredienti selezionati al prodotto
                 var selectedIngredientList = await _dbContext.Ingredients
                     .Where(i => selectedIngredients.Contains(i.IngredientID))
                     .ToListAsync();
@@ -63,7 +64,7 @@ namespace _08022024_s7_progetto.Services
             }
         }
 
-        public async Task<Product> Update(int id, Product updateProduct)
+        public async Task<Product> Update(int id, Product updateProduct, IEnumerable<int> selectedIngredients)
         {
             if (updateProduct == null)
             {
@@ -72,13 +73,17 @@ namespace _08022024_s7_progetto.Services
             try
             {
                 var product = await GetById(id);
+                // associare gli ingredienti selezionati al prodotto
+                var selectedIngredientList = await _dbContext.Ingredients
+                    .Where(i => selectedIngredients.Contains(i.IngredientID))
+                    .ToListAsync();
 
                 product.Name = updateProduct.Name;
                 product.Photo = updateProduct.Photo;
                 product.Price = updateProduct.Price;
-                // product.Ingredients = updateProduct.Ingredients;
+                product.Ingredients = selectedIngredientList;
 
-                _dbContext.Update(product);
+                _dbContext.Products.Update(product);
                 await _dbContext.SaveChangesAsync();
 
                 return product;
@@ -132,6 +137,44 @@ namespace _08022024_s7_progetto.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Errore nel recupero del prodotto con ID {id}");
+                throw;
+            }
+        }
+
+        public async Task<Product> RemoveIngredient(int productId, int ingredientId)
+        {
+            try
+            {
+                var product = await _dbContext.Products
+                    .Include(p => p.Ingredients)
+                    .FirstOrDefaultAsync(p => p.ProductID == productId);
+                if (product == null)
+                {
+                    _logger.LogWarning($"Prodotto con ID {productId} non trovato");
+                    throw new KeyNotFoundException($"Prodotto non ID {productId} non trovato");
+                }
+
+                // trova e rimuovi l'ingrediente dalla collezzione di ingredienti del prodotto
+                var ingredientToRemove = product.Ingredients
+                    .FirstOrDefault(i => i.IngredientID == ingredientId);
+                if(ingredientToRemove == null)
+                {
+
+                    _logger.LogWarning($"Ingrediente con ID {ingredientId} non trovato nel prodotto con ID {productId}");
+                    throw new KeyNotFoundException($"Ingrediente con ID {ingredientId} non trovato nel prodotto con ID {productId}");
+                }
+
+                product.Ingredients.Remove(ingredientToRemove);
+                _dbContext.Update(product);
+
+                await _dbContext.SaveChangesAsync();
+
+                return product;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Errore nella rimozione dell'ingrediente " +
+                    $"con id {ingredientId} del prodotto con ID {productId}");
                 throw;
             }
         }

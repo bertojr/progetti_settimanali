@@ -8,8 +8,9 @@ namespace _08022024_s7_progetto.Interfaces
 		public Task<Product> Create(Product newProduct, IEnumerable<int> selectedIngredients);
 		public Task<List<Product>> GetAll();
 		public Task<Product> GetById(int id);
-		public Task<Product> Update(int id, Product updateProduct);
+		public Task<Product> Update(int id, Product updateProduct, IEnumerable<int> selectedIngredients);
 		public Task<Product> Delete(int id);
+		public Task<Product> RemoveIngredient(int productId, int ingredientId);
 	}
 }
 

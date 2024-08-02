@@ -82,6 +82,14 @@ namespace _08022024_s7_progetto.Controllers
         public async Task<IActionResult> EditProduct(int id)
         {
             var product = await _productService.GetById(id);
+            var ingredients = await _ingredientService.GetAll();
+            ViewBag.Ingredients = new SelectList(ingredients, "IngredientID", "Name");
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
             return View(product);
         }
 
@@ -108,6 +116,10 @@ namespace _08022024_s7_progetto.Controllers
                 return RedirectToAction("AllProducts");
             }
 
+            // se il modello non è valido
+            var ingredients = await _ingredientService.GetAll();
+            ViewBag.Ingredients = new SelectList(ingredients, "IngredientID", "Name");
+
             return View(newProduct);
         }
 
@@ -127,11 +139,11 @@ namespace _08022024_s7_progetto.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProduct(Product updateProduct)
+        public async Task<IActionResult> EditProduct(Product updateProduct, int[] selectedIngredients)
         {
             if (ModelState.IsValid)
             {
-                await _productService.Update(updateProduct.ProductID, updateProduct);
+                await _productService.Update(updateProduct.ProductID, updateProduct, selectedIngredients);
                 return RedirectToAction("AllProducts");
             }
 
@@ -162,6 +174,13 @@ namespace _08022024_s7_progetto.Controllers
             }
 
             return View(updateUser);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveIngredientFromProduct(int productId, int ingredientId)
+        {
+            await _productService.RemoveIngredient(productId, ingredientId);
+            return RedirectToAction("AllProducts");
         }
     }
 }
